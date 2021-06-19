@@ -1,0 +1,131 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px auto;
+
+  .btn-sidebar {
+    #menu__toggle {
+      opacity: 0;
+
+      &:checked ~ .menu__btn > span {
+        transform: rotate(45deg);
+      }
+      &:checked ~ .menu__btn > span::before {
+        top: 0;
+        transform: rotate(0);
+      }
+      &:checked ~ .menu__btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+      &:checked ~ .menu__box {
+        visibility: visible;
+        left: 0;
+      }
+    }
+
+    .menu__btn {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+
+      width: 44px;
+      height: 40px;
+
+      cursor: pointer;
+      z-index: 1;
+
+      & > span,
+      & > span::before,
+      & > span::after {
+        display: block;
+        position: absolute;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $color-dark-gray;
+
+        transition-duration: 0.25s;
+      }
+
+      & > span::before {
+        content: "";
+        top: -15px;
+      }
+      & > span::after {
+        content: "";
+        top: 15px;
+      }
+    }
+  }
+
+  .switcher {
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 90px;
+      height: 34px;
+
+      input {
+        display: none;
+      }
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $color-light-gray;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 34px;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: $color-white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      &:after {
+        transition: 0.5;
+        content: "PLAY";
+        color: $color-white;
+        display: block;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 60%;
+        font-size: 16px;
+        font-family: $font;
+      }
+    }
+
+    input:checked + .slider {
+      background-color: $color-green;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(55px);
+    }
+
+    input:checked + .slider:after {
+      content: "TRAIN";
+      left: 36%;
+    }
+  }
+}

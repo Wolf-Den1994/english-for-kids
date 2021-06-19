@@ -1,0 +1,15 @@
+$color-white: #fff;
+$color-green: #3ac211;
+$color-dark-gray: #616161;
+$color-light-gray: #bbb;
+$font: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+@mixin button() {
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  border: none;
+  &:hover {
+    transition: all 0.1s ease-in-out;
+  }
+}
