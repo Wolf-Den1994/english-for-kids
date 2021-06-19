@@ -2,7 +2,8 @@ $color-white: #fff;
 $color-green: #3ac211;
 $color-dark-gray: #616161;
 $color-light-gray: #bbb;
-$font: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+$color-shadow: #00000040;
+$font: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
 @mixin button() {
   outline: none;

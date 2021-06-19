@@ -5,4 +5,6 @@ export enum Tags {
   LABEL = 'label',
   SPAN = 'span',
   DIV = 'div',
+  IMG = 'img',
+  P = 'p',
 }
