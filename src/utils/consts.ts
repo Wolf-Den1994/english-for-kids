@@ -5,6 +5,8 @@ export const imgCategories = [
   'bird',
   'blouse',
   'smile',
+  'teacher',
+  'mirror',
 ];
 
 export const CATEGORY = 0;

@@ -6,4 +6,25 @@ body {
   font-family: $font;
   padding: 10px;
   font-size: 16px;
+  &.hidden {
+    overflow-y: hidden;
+  }
+}
+
+.overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-color: #0000003f;
+  z-index: 2;
+
+  &.hidden {
+    opacity: 1;
+    pointer-events: all;
+  }
 }

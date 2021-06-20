@@ -1,11 +1,15 @@
-const cards = [
+import { ICards } from './utils/interfaces';
+
+const cards: [string[], ...ICards[][]] = [
   [
-    'Action (set A)',
-    'Action (set B)',
-    'Animal (set A)',
-    'Animal (set B)',
+    'Action',
+    'Activity',
+    'Animal',
+    'Beasts',
     'Clothes',
     'Emotions',
+    'Profession',
+    'House',
   ],
   [
     {
@@ -305,6 +309,106 @@ const cards = [
       translation: 'смех',
       image: 'img/laugh.jpg',
       audioSrc: 'audio/laugh.mp3',
+    },
+  ],
+  [
+    {
+      word: 'teacher',
+      translation: 'учитель',
+      image: 'img/teacher.jpg',
+      audioSrc: 'audio/teacher.mp3',
+    },
+    {
+      word: 'doctor',
+      translation: 'доктор',
+      image: 'img/doctor.jpg',
+      audioSrc: 'audio/doctor.mp3',
+    },
+    {
+      word: 'policeman',
+      translation: 'полицейский',
+      image: 'img/policeman.jpg',
+      audioSrc: 'audio/policeman.mp3',
+    },
+    {
+      word: 'cook',
+      translation: 'повар',
+      image: 'img/cook.jpg',
+      audioSrc: 'audio/cook.mp3',
+    },
+    {
+      word: 'siller',
+      translation: 'продавец',
+      image: 'img/siller.jpg',
+      audioSrc: 'audio/siller.mp3',
+    },
+    {
+      word: 'builder',
+      translation: 'строитель',
+      image: 'img/builder.jpg',
+      audioSrc: 'audio/builder.mp3',
+    },
+    {
+      word: 'gardener',
+      translation: 'садовник',
+      image: 'img/gardener.jpg',
+      audioSrc: 'audio/gardener.mp3',
+    },
+    {
+      word: 'pilot',
+      translation: 'летчик',
+      image: 'img/pilot.jpg',
+      audioSrc: 'audio/pilot.mp3',
+    },
+  ],
+  [
+    {
+      word: 'table',
+      translation: 'стол',
+      image: 'img/table.jpg',
+      audioSrc: 'audio/table.mp3',
+    },
+    {
+      word: 'bed',
+      translation: 'кровать',
+      image: 'img/bed.jpg',
+      audioSrc: 'audio/bed.mp3',
+    },
+    {
+      word: 'chair',
+      translation: 'стул',
+      image: 'img/chair.jpg',
+      audioSrc: 'audio/chair.mp3',
+    },
+    {
+      word: 'wall',
+      translation: 'стена',
+      image: 'img/wall.jpg',
+      audioSrc: 'audio/wall.mp3',
+    },
+    {
+      word: 'floor',
+      translation: 'пол',
+      image: 'img/floor.jpg',
+      audioSrc: 'audio/floor.mp3',
+    },
+    {
+      word: 'mirror',
+      translation: 'зеркало',
+      image: 'img/mirror.jpg',
+      audioSrc: 'audio/mirror.mp3',
+    },
+    {
+      word: 'cupboard',
+      translation: 'шкаф',
+      image: 'img/cupboard.jpg',
+      audioSrc: 'audio/cupboard.mp3',
+    },
+    {
+      word: 'window',
+      translation: 'окно',
+      image: 'img/window.jpg',
+      audioSrc: 'audio/window.mp3',
     },
   ],
 ];

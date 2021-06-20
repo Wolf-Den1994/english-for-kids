@@ -33,9 +33,14 @@
 
       width: 44px;
       height: 40px;
-
+      transition: left 0.2s linear;
       cursor: pointer;
-      z-index: 1;
+      z-index: 4;
+
+      &.hidden {
+        transition: left 0.5s linear 0.5s;
+        left: 200px;
+      }
 
       & > span,
       & > span::before,
