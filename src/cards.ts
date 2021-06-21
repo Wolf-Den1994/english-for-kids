@@ -337,10 +337,10 @@ const cards: [string[], ...ICards[][]] = [
       audioSrc: 'audio/cook.mp3',
     },
     {
-      word: 'siller',
+      word: 'seller',
       translation: 'продавец',
-      image: 'img/siller.jpg',
-      audioSrc: 'audio/siller.mp3',
+      image: 'img/seller.jpg',
+      audioSrc: 'audio/seller.mp3',
     },
     {
       word: 'builder',

@@ -38,7 +38,7 @@
       z-index: 4;
 
       &.hidden {
-        transition: left 0.5s linear 0.5s;
+        transition: left 0.3s linear;
         left: 200px;
       }
 
@@ -47,13 +47,19 @@
       & > span::after {
         display: block;
         position: absolute;
-
         width: 100%;
         height: 3px;
-
         background-color: $color-dark-gray;
-
         transition-duration: 0.25s;
+      }
+
+      &:hover {
+        & > span,
+        & > span::before,
+        & > span::after {
+          background-color: $color-gray;
+          height: 4px;
+        }
       }
 
       & > span::before {

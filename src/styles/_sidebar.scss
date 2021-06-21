@@ -1,16 +1,18 @@
 .sidebar {
-  background-color: aquamarine;
+  background-color: $color-aquamarine;
   position: absolute;
   left: 0;
   width: 290px;
   padding: 100px 0 0 50px;
   top: 0;
   height: 100vh;
-  transition: all 0.8s linear;
+  transition: all 0.3s linear;
   z-index: 3;
+  opacity: 1;
 
   &.hidden {
-    transform: translateX(-1000px);
+    transform: translateX(-300px);
+    opacity: 0;
   }
 
   .menu {
@@ -28,7 +30,7 @@
       width: fit-content;
 
       &:hover {
-        color: #fff;
+        color: $color-green;
         transition: color 0.3s ease-out;
       }
 
@@ -38,7 +40,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #00a650;
+        background-color: $color-green;
         content: "";
         transition: width 0.3s ease-out;
       }

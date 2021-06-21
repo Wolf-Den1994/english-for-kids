@@ -28,3 +28,11 @@ body {
     pointer-events: all;
   }
 }
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  color: $color-dark-gray;
+  line-height: 44px;
+  margin: 15px;
+}

@@ -7,3 +7,4 @@ import './root/root';
 import './category/category';
 import './substrate/overlay';
 import './sidebar/handler';
+import './handler/handler';

@@ -1,5 +1,6 @@
 export enum ElemClasses {
   HIDDEN = 'hidden',
+  IMG_CATEGORY = 'img-category',
 }
 
 export enum Tags {
@@ -15,4 +16,7 @@ export enum Tags {
   UL = 'ul',
   LI = 'li',
   LINK = 'a',
+  SVG = 'svg',
+  TITLE2 = 'h2',
+  AUDIO = 'audio',
 }
