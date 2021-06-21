@@ -1,6 +1,10 @@
 export enum ElemClasses {
   HIDDEN = 'hidden',
   IMG_CATEGORY = 'img-category',
+  MAIN_CARD = 'main-card',
+  FRONT = 'front',
+  SVG = 'svg',
+  HOVER = 'hover',
 }
 
 export enum Tags {

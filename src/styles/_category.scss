@@ -1,5 +1,4 @@
-.category,
-.subject {
+.category {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -38,24 +37,6 @@
       font-size: 22px;
       line-height: 26px;
       text-align: center;
-    }
-
-    .svg {
-      width: 25px;
-      height: 25px;
-      display: inline-block;
-      position: absolute;
-      bottom: 12px;
-      right: 20px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-image: url(./assets/image/reverse.svg);
-      
-      &:hover {
-        transform: rotate(180deg) scale(1.2);
-        transition: 0.5s;
-      }
     }
   }
 }

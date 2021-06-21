@@ -21,21 +21,41 @@ export const renderSubject = function renderSubjectPage(index: number): void {
     card.className = 'main-card';
     subject.append(card);
 
+    const flipper = document.createElement(Tags.DIV);
+    flipper.className = 'flipper';
+    card.append(flipper);
+
+    const front = document.createElement(Tags.DIV);
+    front.className = 'front';
+    flipper.append(front);
+
     const img = document.createElement(Tags.IMG);
     const objCard = cards[index + 1][i] as ICards;
     img.src = `${objCard.image}`;
     img.alt = `${objCard.word}`;
-    img.className = `${cards[CATEGORY][index]}`;
-    card.append(img);
+    img.className = `img ${cards[CATEGORY][index]}`;
+    front.append(img);
 
-    const p = document.createElement(Tags.P);
-    p.className = 'text';
-    p.innerHTML = `${objCard.word}`;
-    card.append(p);
+    const pFront = document.createElement(Tags.P);
+    pFront.className = 'text';
+    pFront.innerHTML = `${objCard.word}`;
+    front.append(pFront);
 
     const reperse = document.createElement(Tags.SVG);
     reperse.className = 'svg';
-    card.append(reperse);
+    front.append(reperse);
+
+    const back = document.createElement(Tags.DIV);
+    back.className = 'back';
+    flipper.append(back);
+
+    const imgBack = img.cloneNode();
+    back.append(imgBack);
+
+    const pBack = document.createElement(Tags.P);
+    pBack.className = 'text';
+    pBack.innerHTML = `${objCard.translation}`;
+    back.append(pBack);
   }
 
   const audio = document.createElement(Tags.AUDIO);
