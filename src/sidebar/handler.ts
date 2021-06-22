@@ -20,7 +20,7 @@ const handlerMenu = (event: Event) => {
       objState.page = 0;
       renderCategory();
     } else {
-      objState.page = index - 1;
+      objState.page = index;
       renderSubject(objState.page);
     }
     closeSidebar();

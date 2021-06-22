@@ -14,6 +14,7 @@ import { changeActiveLink } from './links-active';
 const getWord = (div: HTMLDivElement): string => {
   const img = div.children[0] as HTMLImageElement;
   const imageSrc = img.src;
+  // console.log(img, imageSrc)
   const firstPart = imageSrc.split('/img/').pop() as string;
   const lastPart = firstPart.split('.').shift() as string;
   return lastPart;
@@ -42,6 +43,14 @@ const addListener = (card: HTMLDivElement) => {
   card.addEventListener('mouseleave', flipBack);
 };
 
+const categotySelection = (card: HTMLDivElement) => {
+  const word: string = getWord(card);
+  const index = imgCategories.indexOf(word) + 1;
+  objState.page = index;
+  changeActiveLink(index);
+  renderSubject(index);
+};
+
 const workWithCards = (
   elem: HTMLElement,
   card: HTMLDivElement,
@@ -50,15 +59,12 @@ const workWithCards = (
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
     if (checkClass(parent, 'category')) {
-      const word: string = getWord(card);
-      const index = imgCategories.indexOf(word);
-      objState.page = index;
-      changeActiveLink(index);
-      renderSubject(index);
+      categotySelection(card);
     } else if (checkClasses(parent, elem, card)) {
       if (front) {
         const word: string = getWord(front);
-        const page = cards[objState.page + 1] as ICards[];
+        const page = cards[objState.page] as ICards[];
+        // console.log(page)
         playSound(page, word);
       }
     } else if (checkClass(elem, ElemClasses.SVG)) {
@@ -68,15 +74,17 @@ const workWithCards = (
   }
 };
 
-const categotySelection = (event: Event) => {
+const selectionCard = (event: Event) => {
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
   if (objState.stateApp === 'train') {
     workWithCards(elem, card, front);
+  } else if (objState.page === 0) {
+    categotySelection(card);
   } else {
-    // console.log('need btn start');
+    console.log('togo');
   }
 };
 
-root.addEventListener('click', categotySelection);
+root.addEventListener('click', selectionCard);

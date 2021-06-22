@@ -1,26 +1,35 @@
 import cards from '../cards';
 import { objState } from '../control/objs';
 import { input } from '../header/switcher';
-import { arrImages, arrParags, arrSvgs } from '../subject/render';
 import { addClassList } from '../utils/add-class';
+import { getArrsElem } from '../utils/get-elems';
 import { removeClassList } from '../utils/remove-class';
 
 const switchState = () => {
+  const arrsElems = getArrsElem();
+  // console.log(arrsElems)
+  // console.log(arrsElems.arrSvgs);
   if (input.checked === true) {
     objState.stateApp = 'train';
-    // console.log(cards[objState.page].length);
-    for (let i = 0; i < cards[objState.page].length; i++) {
-      removeClassList(arrSvgs[i], 'play');
-      removeClassList(arrParags[i], 'play');
-      removeClassList(arrImages[i], 'play');
+    // console.log(objState.page)
+    if (objState.page !== 0) {
+      for (let i = 0; i < cards[objState.page].length; i++) {
+        removeClassList(arrsElems.arrSvgs[i], 'play');
+        removeClassList(arrsElems.arrParags[i], 'play');
+        removeClassList(arrsElems.arrImages[i], 'play');
+      }
     }
+    // arrsElems.arrSvgs.length = 0;
+    // arrsElems.arrParags.length = 0;
+    // arrsElems.arrImages.length = 0;
   } else {
     objState.stateApp = 'play';
-    // console.log(cards[objState.page].length);
-    for (let i = 0; i < cards[objState.page].length; i++) {
-      addClassList(arrSvgs[i], 'play');
-      addClassList(arrParags[i], 'play');
-      addClassList(arrImages[i], 'play');
+    if (objState.page !== 0) {
+      for (let i = 0; i < cards[objState.page].length; i++) {
+        addClassList(arrsElems.arrSvgs[i], 'play');
+        addClassList(arrsElems.arrParags[i], 'play');
+        addClassList(arrsElems.arrImages[i], 'play');
+      }
     }
   }
 };

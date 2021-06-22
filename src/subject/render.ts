@@ -1,14 +1,12 @@
 import cards from '../cards';
+import { objState } from '../control/objs';
 import { root } from '../root/root';
 import { CATEGORY } from '../utils/consts';
 import { Tags } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
 
-export const arrSvgs: HTMLElement[] = [];
-export const arrParags: HTMLParagraphElement[] = [];
-export const arrImages: HTMLImageElement[] = [];
-
-export const renderSubject = (index: number): void => {
+export const renderSubject = (page: number): void => {
+  const index = page - 1;
   root.innerHTML = '';
 
   const title = document.createElement(Tags.TITLE2);
@@ -37,36 +35,46 @@ export const renderSubject = (index: number): void => {
     const objCard = cards[index + 1][i] as ICards;
     img.src = `${objCard.image}`;
     img.alt = `${objCard.word}`;
-    img.className = `img ${cards[CATEGORY][index]}`;
     front.append(img);
 
     const pFront = document.createElement(Tags.P);
-    pFront.className = 'text';
     pFront.innerHTML = `${objCard.word}`;
     front.append(pFront);
 
     const reperse = document.createElement(Tags.SVG);
-    reperse.className = 'svg';
     front.append(reperse);
+
+    if (objState.stateApp === 'train') {
+      img.className = `img ${cards[CATEGORY][index]} image`;
+      pFront.className = 'text text-font';
+      reperse.className = 'svg image-svg';
+    } else {
+      img.className = `img ${cards[CATEGORY][index]} image play`;
+      pFront.className = 'text text-font play';
+      reperse.className = 'svg image-svg play';
+    }
 
     const back = document.createElement(Tags.DIV);
     back.className = 'back';
     flipper.append(back);
 
-    const imgBack = img.cloneNode();
+    const imgBack = document.createElement(Tags.IMG);
+    imgBack.src = `${objCard.image}`;
+    imgBack.alt = `${objCard.word}`;
     back.append(imgBack);
 
     const pBack = document.createElement(Tags.P);
     pBack.className = 'text';
     pBack.innerHTML = `${objCard.translation}`;
     back.append(pBack);
-
-    arrSvgs.push(reperse);
-    arrParags.push(pFront);
-    arrImages.push(img);
   }
 
   const audio = document.createElement(Tags.AUDIO);
   audio.className = 'audio';
   subject.append(audio);
+
+  const btnStartGame = document.createElement(Tags.BUTTON);
+  btnStartGame.className = 'btn btn-start-game';
+  btnStartGame.innerHTML = 'Start game';
+  root.append(btnStartGame);
 };

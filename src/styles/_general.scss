@@ -36,3 +36,47 @@ body {
   line-height: 44px;
   margin: 15px;
 }
+
+.btn-start-game {
+  @include button();
+  margin: 20px auto;
+  display: block;
+  font-size: 15px;
+  padding: 2rem 4rem;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #204c08;
+  border-color: $color-aquamarine;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 7px;
+  color: $color-aquamarine;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 150ms ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: $color-aquamarine;
+    z-index: -1;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: #000;
+  }
+
+  &:hover:after {
+    width: 110%;
+  }
+}

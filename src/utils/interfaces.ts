@@ -11,3 +11,9 @@ export interface IObjStateApp {
   page: number;
   stateApp: TypeStateApp;
 }
+
+export interface IHTMLElems {
+  arrSvgs: HTMLElement[];
+  arrParags: HTMLParagraphElement[];
+  arrImages: HTMLImageElement[];
+}

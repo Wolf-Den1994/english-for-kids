@@ -6,7 +6,7 @@ export const changeActiveLink = (newActiveLink: HTMLElement | number): void => {
   if (typeof newActiveLink === 'number') {
     for (let i = 0; i < links.length; i++) {
       if (i === newActiveLink) {
-        addClassList(links[i + 1], 'active');
+        addClassList(links[i], 'active');
       }
     }
   } else {
