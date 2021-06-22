@@ -14,13 +14,14 @@ const handlerSideBar = function openOrCloseSideBar(event: Event) {
     updateClassList(label, sidebar, ElemClasses.HIDDEN);
     addClassList(overlay, ElemClasses.HIDDEN);
     addClassList(document.body, ElemClasses.HIDDEN);
+    overlay.addEventListener('click', handlerSideBar);
   } else {
     input.checked = false;
     updateClassList(sidebar, label, ElemClasses.HIDDEN);
     removeClassList(overlay, ElemClasses.HIDDEN);
     removeClassList(document.body, ElemClasses.HIDDEN);
+    overlay.removeEventListener('click', handlerSideBar);
   }
 };
 
 label.addEventListener('click', handlerSideBar);
-overlay.addEventListener('click', handlerSideBar);

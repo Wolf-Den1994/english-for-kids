@@ -18,22 +18,41 @@ const getWord = function getWordForIndex(div: HTMLDivElement): string {
   return lastPart;
 };
 
+const checkClasses = function checkClassesAtElems(
+  parent: HTMLDivElement,
+  elem: HTMLElement,
+  card: HTMLDivElement,
+) {
+  if (
+    checkClass(parent, 'subject') &&
+    !checkClass(elem, ElemClasses.SVG) &&
+    !checkClass(card, ElemClasses.HOVER)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const addListener = function addListenerOnCard(card: HTMLDivElement) {
+  const flipBack = function flipBackCard() {
+    removeClassList(card, ElemClasses.HOVER);
+    card.removeEventListener('mouseleave', flipBack);
+  };
+  card.addEventListener('mouseleave', flipBack);
+};
+
 const categotySelection = function chooseOneOfCategory(event: Event) {
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
-    if (parent.classList.contains('category')) {
+    if (checkClass(parent, 'category')) {
       const word: string = getWord(card);
       const index = imgCategories.indexOf(word);
       objState.page = index;
       renderSubject(index);
-    } else if (
-      parent.classList.contains('subject') &&
-      !checkClass(elem, ElemClasses.SVG) &&
-      !checkClass(card, ElemClasses.HOVER)
-    ) {
+    } else if (checkClasses(parent, elem, card)) {
       if (front) {
         const word: string = getWord(front);
         const page = cards[objState.page + 1] as ICards[];
@@ -41,13 +60,7 @@ const categotySelection = function chooseOneOfCategory(event: Event) {
       }
     } else if (checkClass(elem, ElemClasses.SVG)) {
       addClassList(card, ElemClasses.HOVER);
-
-      const flipBack = function flipBackCard() {
-        removeClassList(card, ElemClasses.HOVER);
-        card.removeEventListener('mouseleave', flipBack);
-      };
-
-      card.addEventListener('mouseleave', flipBack);
+      addListener(card);
     }
   }
 };
