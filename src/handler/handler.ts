@@ -11,7 +11,7 @@ import { ICards } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 import { changeActiveLink } from './links-active';
 
-const getWord = function getWordForIndex(div: HTMLDivElement): string {
+const getWord = (div: HTMLDivElement): string => {
   const img = div.children[0] as HTMLImageElement;
   const imageSrc = img.src;
   const firstPart = imageSrc.split('/img/').pop() as string;
@@ -19,11 +19,11 @@ const getWord = function getWordForIndex(div: HTMLDivElement): string {
   return lastPart;
 };
 
-const checkClasses = function checkClassesAtElems(
+const checkClasses = (
   parent: HTMLDivElement,
   elem: HTMLElement,
   card: HTMLDivElement,
-) {
+): boolean => {
   if (
     checkClass(parent, 'subject') &&
     !checkClass(elem, ElemClasses.SVG) &&
@@ -34,7 +34,7 @@ const checkClasses = function checkClassesAtElems(
   return false;
 };
 
-const addListener = function addListenerOnCard(card: HTMLDivElement) {
+const addListener = (card: HTMLDivElement) => {
   const flipBack = function flipBackCard() {
     removeClassList(card, ElemClasses.HOVER);
     card.removeEventListener('mouseleave', flipBack);
@@ -42,11 +42,11 @@ const addListener = function addListenerOnCard(card: HTMLDivElement) {
   card.addEventListener('mouseleave', flipBack);
 };
 
-const workWithCards = function workWithSelectionCard(
+const workWithCards = (
   elem: HTMLElement,
   card: HTMLDivElement,
   front: HTMLDivElement,
-) {
+) => {
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
     if (checkClass(parent, 'category')) {
@@ -68,7 +68,7 @@ const workWithCards = function workWithSelectionCard(
   }
 };
 
-const categotySelection = function chooseOneOfCategory(event: Event) {
+const categotySelection = (event: Event) => {
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;

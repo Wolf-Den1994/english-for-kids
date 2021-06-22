@@ -8,7 +8,7 @@ export const arrSvgs: HTMLElement[] = [];
 export const arrParags: HTMLParagraphElement[] = [];
 export const arrImages: HTMLImageElement[] = [];
 
-export const renderSubject = function renderSubjectPage(index: number): void {
+export const renderSubject = (index: number): void => {
   root.innerHTML = '';
 
   const title = document.createElement(Tags.TITLE2);

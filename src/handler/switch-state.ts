@@ -5,7 +5,7 @@ import { arrImages, arrParags, arrSvgs } from '../subject/render';
 import { addClassList } from '../utils/add-class';
 import { removeClassList } from '../utils/remove-class';
 
-const switchState = function switchStateApp() {
+const switchState = () => {
   if (input.checked === true) {
     objState.stateApp = 'train';
     // console.log(cards[objState.page].length);

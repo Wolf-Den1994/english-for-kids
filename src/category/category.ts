@@ -3,7 +3,7 @@ import { root } from '../root/root';
 import { CATEGORY, imgCategories } from '../utils/consts';
 import { Tags } from '../utils/enums';
 
-export const renderCategory = function renderCategoryPage(): void {
+export const renderCategory = (): void => {
   root.innerHTML = '';
 
   const category = document.createElement(Tags.DIV);
