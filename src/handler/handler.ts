@@ -9,6 +9,7 @@ import { imgCategories } from '../utils/consts';
 import { ElemClasses } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
+import { changeActiveLink } from './links-active';
 
 const getWord = function getWordForIndex(div: HTMLDivElement): string {
   const img = div.children[0] as HTMLImageElement;
@@ -51,6 +52,7 @@ const categotySelection = function chooseOneOfCategory(event: Event) {
       const word: string = getWord(card);
       const index = imgCategories.indexOf(word);
       objState.page = index;
+      changeActiveLink(index);
       renderSubject(index);
     } else if (checkClasses(parent, elem, card)) {
       if (front) {

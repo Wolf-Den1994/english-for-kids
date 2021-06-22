@@ -1,5 +1,6 @@
 import { renderCategory } from '../category/category';
 import { objState } from '../control/objs';
+import { changeActiveLink } from '../handler/links-active';
 import { input, label } from '../header/btn-sidebar';
 import { renderSubject } from '../subject/render';
 import { overlay } from '../substrate/overlay';
@@ -8,14 +9,13 @@ import { checkClass } from '../utils/check-class';
 import { ElemClasses } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
-import { links, list, menu, sidebar } from './sidebar';
+import { list, menu, sidebar } from './sidebar';
 
 const handlerMenu = function handlerMenuSidebar(event: Event) {
   const target = event.target as HTMLElement;
   if (checkClass(target, 'menu-link')) {
     const index = list.indexOf(target.innerHTML);
-    for (let i = 0; i < links.length; i++) links[i].className = 'menu-link';
-    addClassList(target, 'active');
+    changeActiveLink(target);
     if (index === 0) {
       objState.page = 0;
       renderCategory();
