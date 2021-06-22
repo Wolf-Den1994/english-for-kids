@@ -2,14 +2,14 @@ import cards from '../cards';
 import { CATEGORY } from '../utils/consts';
 import { Tags } from '../utils/enums';
 
-const list: string[] = cards[CATEGORY].slice();
+export const list: string[] = cards[CATEGORY].slice();
 list.unshift('Main page');
 
 export const sidebar = document.createElement(Tags.ASIDE);
 sidebar.className = 'sidebar hidden';
 document.body.append(sidebar);
 
-const menu = document.createElement(Tags.UL);
+export const menu = document.createElement(Tags.UL);
 menu.className = 'menu';
 sidebar.append(menu);
 

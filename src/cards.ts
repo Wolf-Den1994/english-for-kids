@@ -171,7 +171,7 @@ const cards: [string[], ...ICards[][]] = [
     {
       word: 'fish',
       translation: 'рыба',
-      image: 'img/fish1.jpg',
+      image: 'img/fish.jpg',
       audioSrc: 'audio/fish.mp3',
     },
     {
