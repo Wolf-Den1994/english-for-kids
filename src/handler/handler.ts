@@ -42,10 +42,11 @@ const addListener = function addListenerOnCard(card: HTMLDivElement) {
   card.addEventListener('mouseleave', flipBack);
 };
 
-const categotySelection = function chooseOneOfCategory(event: Event) {
-  const elem = event.target as HTMLElement;
-  const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
-  const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
+const workWithCards = function workWithSelectionCard(
+  elem: HTMLElement,
+  card: HTMLDivElement,
+  front: HTMLDivElement,
+) {
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
     if (checkClass(parent, 'category')) {
@@ -64,6 +65,17 @@ const categotySelection = function chooseOneOfCategory(event: Event) {
       addClassList(card, ElemClasses.HOVER);
       addListener(card);
     }
+  }
+};
+
+const categotySelection = function chooseOneOfCategory(event: Event) {
+  const elem = event.target as HTMLElement;
+  const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
+  const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
+  if (objState.stateApp === 'train') {
+    workWithCards(elem, card, front);
+  } else {
+    // console.log('need btn start');
   }
 };
 

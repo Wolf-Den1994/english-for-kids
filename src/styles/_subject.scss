@@ -58,6 +58,11 @@
       object-fit: cover;
       margin: 10px auto 30px;
       border-radius: 10px;
+
+      &.play {
+        height: 100%;
+        margin: 0;
+      }
     }
 
     .text {
@@ -65,6 +70,13 @@
       font-size: 22px;
       line-height: 26px;
       text-align: center;
+
+      &.play {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        font-size: 0;
+      }
     }
 
     .svg {
@@ -78,6 +90,13 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-image: url(./assets/image/reverse.svg);
+
+      &.play {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        font-size: 0;
+      }
 
       &:hover {
         transform: rotate(180deg) scale(1.2);

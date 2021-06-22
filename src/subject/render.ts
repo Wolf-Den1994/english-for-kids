@@ -4,6 +4,10 @@ import { CATEGORY } from '../utils/consts';
 import { Tags } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
 
+export const arrSvgs: HTMLElement[] = [];
+export const arrParags: HTMLParagraphElement[] = [];
+export const arrImages: HTMLImageElement[] = [];
+
 export const renderSubject = function renderSubjectPage(index: number): void {
   root.innerHTML = '';
 
@@ -56,6 +60,10 @@ export const renderSubject = function renderSubjectPage(index: number): void {
     pBack.className = 'text';
     pBack.innerHTML = `${objCard.translation}`;
     back.append(pBack);
+
+    arrSvgs.push(reperse);
+    arrParags.push(pFront);
+    arrImages.push(img);
   }
 
   const audio = document.createElement(Tags.AUDIO);

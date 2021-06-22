@@ -8,3 +8,4 @@ import './category/category';
 import './substrate/overlay';
 import './sidebar/handler';
 import './handler/handler';
+import './handler/switch-state';

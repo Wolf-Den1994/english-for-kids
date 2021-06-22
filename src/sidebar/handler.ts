@@ -11,7 +11,7 @@ import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
 import { list, menu, sidebar } from './sidebar';
 
-const handlerMenu = function handlerMenuSidebar(event: Event) {
+const handlerMenu = (event: Event) => {
   const target = event.target as HTMLElement;
   if (checkClass(target, 'menu-link')) {
     const index = list.indexOf(target.innerHTML);
@@ -23,27 +23,36 @@ const handlerMenu = function handlerMenuSidebar(event: Event) {
       objState.page = index - 1;
       renderSubject(objState.page);
     }
+    closeSidebar();
   }
 };
 
-const handlerSideBar = function openOrCloseSideBar(event: Event) {
+const handlerSideBar = (event: Event) => {
   event.preventDefault();
   if (checkClass(sidebar, ElemClasses.HIDDEN)) {
-    input.checked = true;
-    updateClassList(label, sidebar, ElemClasses.HIDDEN);
-    addClassList(overlay, ElemClasses.HIDDEN);
-    addClassList(document.body, ElemClasses.HIDDEN);
-    overlay.addEventListener('click', handlerSideBar);
-    menu.addEventListener('click', handlerMenu);
+    openSidebar();
   } else {
-    input.checked = false;
-    updateClassList(sidebar, label, ElemClasses.HIDDEN);
-    removeClassList(overlay, ElemClasses.HIDDEN);
-    removeClassList(document.body, ElemClasses.HIDDEN);
-    overlay.removeEventListener('click', handlerSideBar);
-    menu.removeEventListener('click', handlerMenu);
+    closeSidebar();
   }
 };
+
+function openSidebar() {
+  input.checked = true;
+  updateClassList(label, sidebar, ElemClasses.HIDDEN);
+  addClassList(overlay, ElemClasses.HIDDEN);
+  addClassList(document.body, ElemClasses.HIDDEN);
+  overlay.addEventListener('click', handlerSideBar);
+  menu.addEventListener('click', handlerMenu);
+}
+
+function closeSidebar() {
+  input.checked = false;
+  updateClassList(sidebar, label, ElemClasses.HIDDEN);
+  removeClassList(overlay, ElemClasses.HIDDEN);
+  removeClassList(document.body, ElemClasses.HIDDEN);
+  overlay.removeEventListener('click', handlerSideBar);
+  menu.removeEventListener('click', handlerMenu);
+}
 
 label.addEventListener('click', handlerSideBar);
 menu.addEventListener('click', handlerMenu);
