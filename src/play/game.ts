@@ -22,7 +22,7 @@ export const startGame = (elem: HTMLElement): void => {
   // console.log(page)
   // console.log(randomAudios)
   objGame.arrAudios = randomAudios;
-  sound(randomAudios[0]);
+  sound(randomAudios[0], 'first');
 };
 
 export const gameProcess = (elem: HTMLElement): void => {
@@ -34,12 +34,17 @@ export const gameProcess = (elem: HTMLElement): void => {
     // console.log(wordAudio, wordImage);
     if (wordImage === wordAudio) {
       // console.log('начало', objGame.arrAudios);
+      sound(`./audio/correct.mp3`, 'second');
       addClassList(elem, 'great');
       objGame.arrAudios.shift();
-      if (objGame.arrAudios.length > 0) {
-        sound(objGame.arrAudios[0]);
-      }
+      setTimeout(() => {
+        if (objGame.arrAudios.length > 0) {
+          sound(objGame.arrAudios[0], 'first');
+        }
+      }, 1000);
       // console.log('конец', objGame.arrAudios);
+    } else {
+      sound(`./audio/error.mp3`, 'second');
     }
   }
 };

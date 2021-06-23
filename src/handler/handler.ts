@@ -82,11 +82,12 @@ const selectionCard = (event: Event) => {
     startGame(elem);
   } else if (checkClass(elem, 'repeat')) {
     if (objGame.arrAudios.length > 0) {
-      sound(objGame.arrAudios[0]);
+      sound(objGame.arrAudios[0], 'first');
     }
   } else if (
     checkClass(elem, 'img') &&
-    !checkClass(elems.btnStartGame, 'btn-start-game')
+    !checkClass(elems.btnStartGame, 'btn-start-game') &&
+    !checkClass(elem, 'great')
   ) {
     gameProcess(elem);
   }

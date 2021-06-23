@@ -69,9 +69,13 @@ export const renderSubject = (page: number): void => {
     back.append(pBack);
   }
 
-  const audio = document.createElement(Tags.AUDIO);
-  audio.className = 'audio';
-  subject.append(audio);
+  const audio1 = document.createElement(Tags.AUDIO);
+  audio1.className = 'audio1';
+  subject.append(audio1);
+
+  const audio2 = document.createElement(Tags.AUDIO);
+  audio2.className = 'audio2';
+  subject.append(audio2);
 
   const btnStartGame = document.createElement(Tags.BUTTON);
   btnStartGame.className =
