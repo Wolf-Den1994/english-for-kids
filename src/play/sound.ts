@@ -1,10 +1,14 @@
 import { ICards } from '../utils/interfaces';
 
-export const playSound = (page: ICards[], word: string): void => {
+export const sound = (link: string): void => {
   const audio = <HTMLAudioElement>document.querySelector('.audio');
-  const rightObjWithWord = page.filter((obj) => obj.word === word);
   audio.currentTime = 0;
-  // console.log(rightObjWithWord)
-  audio.src = `./${rightObjWithWord[0].audioSrc}`;
+  audio.src = `./${link}`;
   audio.play();
+};
+
+export const playSound = (page: ICards[], word: string): void => {
+  const rightObjWithWord = page.filter((obj) => obj.word === word);
+  const link = `${rightObjWithWord[0].audioSrc}`;
+  sound(link);
 };

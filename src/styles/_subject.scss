@@ -63,6 +63,10 @@
         height: 100%;
         margin: 0;
       }
+
+      &.great {
+        filter: hue-rotate(90deg) sepia(0.9);
+      }
     }
 
     .text {

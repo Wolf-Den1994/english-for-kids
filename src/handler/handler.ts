@@ -1,5 +1,6 @@
 import cards from '../cards';
 import { objState } from '../control/objs';
+import { gameProcess, startGame } from '../play/game';
 import { playSound } from '../play/sound';
 import { root } from '../root/root';
 import { renderSubject } from '../subject/render';
@@ -7,18 +8,11 @@ import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { imgCategories } from '../utils/consts';
 import { ElemClasses } from '../utils/enums';
+import { getArrsElem } from '../utils/get-elems';
+import { getWord } from '../utils/get-word';
 import { ICards } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 import { changeActiveLink } from './links-active';
-
-const getWord = (div: HTMLDivElement): string => {
-  const img = div.children[0] as HTMLImageElement;
-  const imageSrc = img.src;
-  // console.log(img, imageSrc)
-  const firstPart = imageSrc.split('/img/').pop() as string;
-  const lastPart = firstPart.split('.').shift() as string;
-  return lastPart;
-};
 
 const checkClasses = (
   parent: HTMLDivElement,
@@ -75,6 +69,7 @@ const workWithCards = (
 };
 
 const selectionCard = (event: Event) => {
+  const elems = getArrsElem();
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
@@ -82,8 +77,13 @@ const selectionCard = (event: Event) => {
     workWithCards(elem, card, front);
   } else if (objState.page === 0) {
     categotySelection(card);
-  } else {
-    console.log('togo');
+  } else if (checkClass(elem, 'btn-start-game')) {
+    startGame(elem);
+  } else if (
+    checkClass(elem, 'img') &&
+    !checkClass(elems.btnStartGame, 'btn-start-game')
+  ) {
+    gameProcess(elem);
   }
 };
 

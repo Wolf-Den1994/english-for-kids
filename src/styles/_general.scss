@@ -37,12 +37,13 @@ body {
   margin: 15px;
 }
 
-.btn-start-game {
+.btn {
   @include button();
   margin: 20px auto;
   display: block;
   font-size: 15px;
   padding: 2rem 4rem;
+  height: 80px;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -67,6 +68,7 @@ body {
     transform: translateX(-50%);
     width: 0;
     height: 100%;
+    opacity: 0.3;
     background: $color-aquamarine;
     z-index: -1;
     transition: width 0.3s ease-in-out;
@@ -78,5 +80,24 @@ body {
 
   &:hover:after {
     width: 110%;
+  }
+
+  &.play {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+  }
+
+  &.repeat {
+    width: 75px;
+    height: 75px;
+    font-size: 0;
+    background-image: url(./assets/image/repeat.svg);
+    background-color: #204c08;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 32px 32px, cover;
+    background-position: 50%;
   }
 }

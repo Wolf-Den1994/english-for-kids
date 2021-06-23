@@ -74,7 +74,10 @@ export const renderSubject = (page: number): void => {
   subject.append(audio);
 
   const btnStartGame = document.createElement(Tags.BUTTON);
-  btnStartGame.className = 'btn btn-start-game';
+  btnStartGame.className =
+    objState.stateApp === 'train'
+      ? 'btn btn-start-game play'
+      : 'btn btn-start-game';
   btnStartGame.innerHTML = 'Start game';
   root.append(btnStartGame);
 };

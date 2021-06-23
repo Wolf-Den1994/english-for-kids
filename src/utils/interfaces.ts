@@ -16,4 +16,5 @@ export interface IHTMLElems {
   arrSvgs: HTMLElement[];
   arrParags: HTMLParagraphElement[];
   arrImages: HTMLImageElement[];
+  btnStartGame: HTMLButtonElement;
 }

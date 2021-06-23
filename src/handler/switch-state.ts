@@ -6,29 +6,25 @@ import { getArrsElem } from '../utils/get-elems';
 import { removeClassList } from '../utils/remove-class';
 
 const switchState = () => {
-  const arrsElems = getArrsElem();
-  // console.log(arrsElems)
-  // console.log(arrsElems.arrSvgs);
+  const elems = getArrsElem();
   if (input.checked === true) {
     objState.stateApp = 'train';
-    // console.log(objState.page)
     if (objState.page !== 0) {
+      addClassList(elems.btnStartGame, 'play');
       for (let i = 0; i < cards[objState.page].length; i++) {
-        removeClassList(arrsElems.arrSvgs[i], 'play');
-        removeClassList(arrsElems.arrParags[i], 'play');
-        removeClassList(arrsElems.arrImages[i], 'play');
+        removeClassList(elems.arrSvgs[i], 'play');
+        removeClassList(elems.arrParags[i], 'play');
+        removeClassList(elems.arrImages[i], 'play');
       }
     }
-    // arrsElems.arrSvgs.length = 0;
-    // arrsElems.arrParags.length = 0;
-    // arrsElems.arrImages.length = 0;
   } else {
     objState.stateApp = 'play';
     if (objState.page !== 0) {
+      removeClassList(elems.btnStartGame, 'play');
       for (let i = 0; i < cards[objState.page].length; i++) {
-        addClassList(arrsElems.arrSvgs[i], 'play');
-        addClassList(arrsElems.arrParags[i], 'play');
-        addClassList(arrsElems.arrImages[i], 'play');
+        addClassList(elems.arrSvgs[i], 'play');
+        addClassList(elems.arrParags[i], 'play');
+        addClassList(elems.arrImages[i], 'play');
       }
     }
   }
