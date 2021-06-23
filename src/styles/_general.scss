@@ -101,3 +101,26 @@ body {
     background-position: 50%;
   }
 }
+
+.score {
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  height: 45px;
+  .star {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    flex-shrink: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 45px;
+    &.win {
+      background-image: url(./assets/image/star-win.svg);
+    }
+    &.fail {
+      background-image: url(./assets/image/star.svg);
+    }
+  }
+}

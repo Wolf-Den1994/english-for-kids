@@ -14,6 +14,10 @@ export const renderSubject = (page: number): void => {
   title.innerHTML = cards[CATEGORY][index];
   root.append(title);
 
+  const score = document.createElement(Tags.DIV);
+  score.className = 'score';
+  root.append(score);
+
   const subject = document.createElement(Tags.DIV);
   subject.className = 'subject';
   root.append(subject);

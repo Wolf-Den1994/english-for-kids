@@ -3,9 +3,17 @@ import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
+import { Tags } from '../utils/enums';
 import { getStringWord } from '../utils/get-word';
 import { ICards } from '../utils/interfaces';
 import { sound } from './sound';
+
+const addStars = (nameClass: string) => {
+  const score = <HTMLDivElement>document.querySelector('.score');
+  const star = document.createElement(Tags.SPAN);
+  star.className = `star ${nameClass}`;
+  score.append(star);
+};
 
 const generateRandom = (page: ICards[]) => {
   const arrAudios: string[] = [];
@@ -36,6 +44,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       // console.log('начало', objGame.arrAudios);
       sound(`./audio/correct.mp3`, 'second');
       addClassList(elem, 'great');
+      addStars('win');
       objGame.arrAudios.shift();
       setTimeout(() => {
         if (objGame.arrAudios.length > 0) {
@@ -45,6 +54,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       // console.log('конец', objGame.arrAudios);
     } else {
       sound(`./audio/error.mp3`, 'second');
+      addStars('fail');
     }
   }
 };
