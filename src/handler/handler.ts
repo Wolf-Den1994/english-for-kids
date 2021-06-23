@@ -1,7 +1,8 @@
 import cards from '../cards';
+import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
 import { gameProcess, startGame } from '../play/game';
-import { playSound } from '../play/sound';
+import { playSound, sound } from '../play/sound';
 import { root } from '../root/root';
 import { renderSubject } from '../subject/render';
 import { addClassList } from '../utils/add-class';
@@ -79,6 +80,10 @@ const selectionCard = (event: Event) => {
     categotySelection(card);
   } else if (checkClass(elem, 'btn-start-game')) {
     startGame(elem);
+  } else if (checkClass(elem, 'repeat')) {
+    if (objGame.arrAudios.length > 0) {
+      sound(objGame.arrAudios[0]);
+    }
   } else if (
     checkClass(elem, 'img') &&
     !checkClass(elems.btnStartGame, 'btn-start-game')
