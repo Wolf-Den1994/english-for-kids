@@ -18,3 +18,9 @@ export interface IHTMLElems {
   arrImages: HTMLImageElement[];
   btnStartGame: HTMLButtonElement;
 }
+
+export interface IGameState {
+  arrAudios: string[];
+  arrImages: string[];
+  counterErrors: number;
+}

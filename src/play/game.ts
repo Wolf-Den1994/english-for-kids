@@ -1,6 +1,7 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
+import { renderFinish } from '../finish/finish';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
 import { Tags } from '../utils/enums';
@@ -46,13 +47,16 @@ export const gameProcess = (elem: HTMLElement): void => {
       addClassList(elem, 'great');
       addStars('win');
       objGame.arrAudios.shift();
-      setTimeout(() => {
-        if (objGame.arrAudios.length > 0) {
+      if (objGame.arrAudios.length > 0) {
+        setTimeout(() => {
           sound(objGame.arrAudios[0], 'first');
-        }
-      }, 1000);
+        }, 1000);
+      } else {
+        renderFinish();
+      }
       // console.log('конец', objGame.arrAudios);
     } else {
+      objGame.counterErrors++;
       sound(`./audio/error.mp3`, 'second');
       addStars('fail');
     }

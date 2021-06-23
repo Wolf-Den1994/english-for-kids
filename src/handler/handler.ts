@@ -70,6 +70,7 @@ const workWithCards = (
 };
 
 const selectionCard = (event: Event) => {
+  // console.log(event);
   const elems = getArrsElem();
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;

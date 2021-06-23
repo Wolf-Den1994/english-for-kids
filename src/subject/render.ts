@@ -1,4 +1,5 @@
 import cards from '../cards';
+import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
 import { root } from '../root/root';
 import { CATEGORY } from '../utils/consts';
@@ -6,6 +7,7 @@ import { Tags } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
 
 export const renderSubject = (page: number): void => {
+  objGame.counterErrors = 0;
   const index = page - 1;
   root.innerHTML = '';
 

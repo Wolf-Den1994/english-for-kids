@@ -3,7 +3,10 @@ import { ICards } from '../utils/interfaces';
 const tone = (audio: HTMLAudioElement, link: string) => {
   audio.currentTime = 0;
   audio.src = `./${link}`;
-  audio.play();
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {}).catch(() => {});
+  }
 };
 
 export const sound = (link: string, index: 'first' | 'second'): void => {

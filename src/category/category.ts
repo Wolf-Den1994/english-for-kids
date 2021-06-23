@@ -1,9 +1,11 @@
 import cards from '../cards';
+import { objGame } from '../control/obj-game';
 import { root } from '../root/root';
 import { CATEGORY, imgCategories } from '../utils/consts';
 import { Tags } from '../utils/enums';
 
 export const renderCategory = (): void => {
+  objGame.counterErrors = 0;
   root.innerHTML = '';
 
   const category = document.createElement(Tags.DIV);
