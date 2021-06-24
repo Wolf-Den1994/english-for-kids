@@ -23,4 +23,9 @@ export enum Tags {
   SVG = 'svg',
   TITLE2 = 'h2',
   AUDIO = 'audio',
+  TABLE = 'table',
+  TBODY = 'tbody',
+  TR = 'tr',
+  TH = 'th',
+  TD = 'td',
 }

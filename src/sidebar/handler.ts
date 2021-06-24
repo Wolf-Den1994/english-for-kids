@@ -1,11 +1,14 @@
+import cards from '../cards';
 import { renderCategory } from '../category/category';
 import { objState } from '../control/objs';
 import { changeActiveLink } from '../handler/links-active';
 import { input, label } from '../header/btn-sidebar';
+import { renderStatistic } from '../statistic/render-statistic';
 import { renderSubject } from '../subject/render';
 import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
+import { CATEGORY } from '../utils/consts';
 import { ElemClasses } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
@@ -19,9 +22,11 @@ const handlerMenu = (event: Event) => {
     if (index === 0) {
       objState.page = 0;
       renderCategory();
-    } else {
+    } else if (index <= cards[CATEGORY].length) {
       objState.page = index;
       renderSubject(objState.page);
+    } else {
+      renderStatistic();
     }
     closeSidebar();
   }

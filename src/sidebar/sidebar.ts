@@ -6,6 +6,7 @@ let isFirstLink = true;
 
 export const list: string[] = cards[CATEGORY].slice();
 list.unshift('Main page');
+list.push('Statistic');
 
 export const sidebar = document.createElement(Tags.ASIDE);
 sidebar.className = 'sidebar hidden';
