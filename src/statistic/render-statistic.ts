@@ -1,9 +1,7 @@
-import cards from '../cards';
-import { objStatistic } from '../control/obj-statistic';
+import { fullCards } from '../control/obj-statistic';
+import { objState } from '../control/objs';
 import { root } from '../root/root';
-import { CATEGORY } from '../utils/consts';
 import { Tags } from '../utils/enums';
-import { ICards } from '../utils/interfaces';
 import { mainStatistic } from './main';
 import { table } from './table';
 import { tbody } from './tbody';
@@ -14,7 +12,7 @@ const cleareField = () => {
   tbody.innerHTML = '';
   table.innerHTML = '';
   trTitle.innerHTML = '';
-  objStatistic.count = 1;
+  objState.countStatistic = 1;
 };
 
 export const renderStatistic = (): void => {
@@ -26,24 +24,19 @@ export const renderStatistic = (): void => {
   tbody.append(trTitle);
   renderTitleRow();
 
-  for (let i = 1; i <= cards[CATEGORY].length; i++) {
-    cards[i].forEach((elem: string | ICards) => {
-      if (typeof elem === 'object') {
-        const row = document.createElement(Tags.TR);
-        row.className = 'row';
-        row.innerHTML += `
-          <td class="cell">${objStatistic.count}</td>
-          <td class="cell">${cards[CATEGORY][i - 1]}</td>
-          <td class="cell">${elem.word}</td>
-          <td class="cell">${elem.translation}</td>
-          <td class="cell">${0}</td>
-          <td class="cell">${0}</td>
-          <td class="cell">${0}</td>
-          <td class="cell">${0}</td>
-        `;
-        tbody.append(row);
-      }
-      objStatistic.count++;
-    });
+  for (let i = 0; i < fullCards.length; i++) {
+    const row = document.createElement(Tags.TR);
+    row.className = 'row';
+    row.innerHTML += `
+      <td class="cell">${i + 1}</td>
+      <td class="cell cell-word">${fullCards[i].category}</td>
+      <td class="cell cell-word">${fullCards[i].word}</td>
+      <td class="cell cell-word">${fullCards[i].translation}</td>
+      <td class="cell">${fullCards[i].train}</td>
+      <td class="cell">${fullCards[i].answers}</td>
+      <td class="cell">${fullCards[i].errors}</td>
+      <td class="cell">${Math.round(fullCards[i].percent)}</td>
+    `;
+    tbody.append(row);
   }
 };

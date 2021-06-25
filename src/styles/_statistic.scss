@@ -32,18 +32,24 @@
   }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 600px) {
   .statistic-table {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 510px) {
   .statistic-table {
     font-size: 11px;
+  }
+}
 
-    th {
-      writing-mode: vertical-lr;
-    }
+@media (max-width: 440px) {
+  th,
+  .cell-word {
+    writing-mode: vertical-lr;
+  }
+  .div-th {
+    writing-mode: horizontal-tb;
   }
 }

@@ -26,6 +26,7 @@ const handlerMenu = (event: Event) => {
       objState.page = index;
       renderSubject(objState.page);
     } else {
+      objState.page = 9;
       renderStatistic();
     }
     closeSidebar();

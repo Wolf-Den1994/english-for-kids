@@ -37,10 +37,10 @@ const cards: [string[], ...ICards[][]] = [
       audioSrc: 'audio/draw.mp3',
     },
     {
-      word: 'fish',
-      translation: 'ловить рыбу',
-      image: 'img/fish.jpg',
-      audioSrc: 'audio/fish.mp3',
+      word: 'clap',
+      translation: 'хлопать',
+      image: 'img/clap.jpg',
+      audioSrc: 'audio/clap.mp3',
     },
     {
       word: 'fly',

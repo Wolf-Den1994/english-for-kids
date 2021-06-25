@@ -10,6 +10,7 @@ export interface ICards {
 export interface IObjStateApp {
   page: number;
   stateApp: TypeStateApp;
+  countStatistic: number;
 }
 
 export interface IHTMLElems {
@@ -23,4 +24,15 @@ export interface IGameState {
   arrAudios: string[];
   arrImages: string[];
   counterErrors: number;
+}
+
+export interface IFullCars {
+  category: string;
+  word: string;
+  translation: string;
+  train: number;
+  play: number;
+  errors: number;
+  answers: number;
+  percent: number;
 }

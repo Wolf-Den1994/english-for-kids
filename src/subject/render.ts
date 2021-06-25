@@ -51,11 +51,11 @@ export const renderSubject = (page: number): void => {
     front.append(reperse);
 
     if (objState.stateApp === 'train') {
-      img.className = `img ${cards[CATEGORY][index]} image`;
+      img.className = `img ${cards[CATEGORY][index]} image picture`;
       pFront.className = 'text text-font';
       reperse.className = 'svg image-svg';
     } else {
-      img.className = `img ${cards[CATEGORY][index]} image play`;
+      img.className = `img ${cards[CATEGORY][index]} image picture play`;
       pFront.className = 'text text-font play';
       reperse.className = 'svg image-svg play';
     }
@@ -66,6 +66,7 @@ export const renderSubject = (page: number): void => {
 
     const imgBack = document.createElement(Tags.IMG);
     imgBack.src = `${objCard.image}`;
+    imgBack.className = 'picture';
     imgBack.alt = `${objCard.word}`;
     back.append(imgBack);
 

@@ -1,5 +1,6 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
+import { dispatchInfo, fullCards } from '../control/obj-statistic';
 import { objState } from '../control/objs';
 import { renderFinish } from '../finish/finish';
 import { addClassList } from '../utils/add-class';
@@ -46,6 +47,14 @@ export const gameProcess = (elem: HTMLElement): void => {
       sound(`./audio/correct.mp3`, 'second');
       addClassList(elem, 'great');
       addStars('win');
+      fullCards.forEach((item) => {
+        if (item.word === wordImage) {
+          item.play++;
+          item.answers++;
+          item.percent = (item.play / item.answers) * 100;
+        }
+      });
+      dispatchInfo(fullCards);
       objGame.arrAudios.shift();
       if (objGame.arrAudios.length > 0) {
         setTimeout(() => {
@@ -54,11 +63,18 @@ export const gameProcess = (elem: HTMLElement): void => {
       } else {
         renderFinish();
       }
-      // console.log('конец', objGame.arrAudios);
     } else {
       objGame.counterErrors++;
       sound(`./audio/error.mp3`, 'second');
       addStars('fail');
+      fullCards.forEach((item) => {
+        if (item.word === wordAudio) {
+          item.errors++;
+          item.answers++;
+          item.percent = (item.play / item.answers) * 100;
+        }
+      });
+      dispatchInfo(fullCards);
     }
   }
 };

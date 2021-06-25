@@ -9,7 +9,7 @@ const switchState = () => {
   const elems = getArrsElem();
   if (input.checked === true) {
     objState.stateApp = 'train';
-    if (objState.page !== 0) {
+    if (objState.page !== 0 && objState.page !== 9) {
       addClassList(elems.btnStartGame, 'play');
       for (let i = 0; i < cards[objState.page].length; i++) {
         removeClassList(elems.arrSvgs[i], 'play');
@@ -19,7 +19,7 @@ const switchState = () => {
     }
   } else {
     objState.stateApp = 'play';
-    if (objState.page !== 0) {
+    if (objState.page !== 0 && objState.page !== 9) {
       removeClassList(elems.btnStartGame, 'play');
       for (let i = 0; i < cards[objState.page].length; i++) {
         addClassList(elems.arrSvgs[i], 'play');

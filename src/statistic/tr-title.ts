@@ -1,4 +1,4 @@
-import { Tags } from '../utils/enums';
+import { Arrow, Tags } from '../utils/enums';
 
 export const trTitle = document.createElement(Tags.TR);
 trTitle.className = 'title-row';
@@ -29,7 +29,7 @@ export const renderTitleRow = (): void => {
   for (let i = 0; i < NUMBER_COLUMN; i++) {
     const th = document.createElement(Tags.TH);
     th.className = arrClassListsTH[i];
-    th.innerHTML = arrContentTH[i];
+    th.innerHTML = `${arrContentTH[i]} <div class="div-th">${Arrow.DOWN}</div>`;
     trTitle.append(th);
   }
 };

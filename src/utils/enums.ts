@@ -29,3 +29,8 @@ export enum Tags {
   TH = 'th',
   TD = 'td',
 }
+
+export enum Arrow {
+  DOWN = '&#8595;',
+  UP = '&#8593;',
+}

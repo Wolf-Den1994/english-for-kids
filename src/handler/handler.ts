@@ -1,5 +1,6 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
+import { dispatchInfo, fullCards } from '../control/obj-statistic';
 import { objState } from '../control/objs';
 import { gameProcess, startGame } from '../play/game';
 import { playSound, sound } from '../play/sound';
@@ -60,6 +61,12 @@ const workWithCards = (
         const word: string = getWord(front);
         const page = cards[objState.page] as ICards[];
         // console.log(page)
+        fullCards.forEach((item) => {
+          if (item.word === word) {
+            item.train++;
+          }
+        });
+        dispatchInfo(fullCards);
         playSound(page, word);
       }
     } else if (checkClass(elem, ElemClasses.SVG)) {
