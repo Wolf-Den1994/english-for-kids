@@ -1,5 +1,6 @@
 import cards from '../cards';
 import { renderCategory } from '../category/category';
+import { fullCards } from '../control/obj-statistic';
 import { objState } from '../control/objs';
 import { changeActiveLink } from '../handler/links-active';
 import { input, label } from '../header/btn-sidebar';
@@ -9,7 +10,7 @@ import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { CATEGORY } from '../utils/consts';
-import { ElemClasses } from '../utils/enums';
+import { ElemClasses, Order } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
 import { list, menu, sidebar } from './sidebar';
@@ -27,7 +28,7 @@ const handlerMenu = (event: Event) => {
       renderSubject(objState.page);
     } else {
       objState.page = 9;
-      renderStatistic();
+      renderStatistic(fullCards, Order.DESC);
     }
     closeSidebar();
   }

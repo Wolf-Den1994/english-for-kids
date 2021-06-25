@@ -4,4 +4,5 @@ export const objState: IObjStateApp = {
   page: 0,
   stateApp: 'train',
   countStatistic: 1,
+  countCards: 1,
 };

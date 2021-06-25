@@ -5,6 +5,7 @@ import { objState } from '../control/objs';
 import { gameProcess, startGame } from '../play/game';
 import { playSound, sound } from '../play/sound';
 import { root } from '../root/root';
+import { sortStatistic } from '../statistic/sort';
 import { renderSubject } from '../subject/render';
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
@@ -82,10 +83,18 @@ const selectionCard = (event: Event) => {
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
+  const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
   if (objState.stateApp === 'train') {
     workWithCards(elem, card, front);
+    if (objState.page === 9 && titleTh) {
+      // console.log('sort')
+      sortStatistic(titleTh);
+    }
   } else if (objState.page === 0) {
     categotySelection(card);
+  } else if (objState.page === 9 && titleTh) {
+    // console.log('sort')
+    sortStatistic(titleTh);
   } else if (checkClass(elem, 'btn-start-game')) {
     startGame(elem);
   } else if (checkClass(elem, 'repeat')) {

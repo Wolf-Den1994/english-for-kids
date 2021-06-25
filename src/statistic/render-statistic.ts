@@ -1,7 +1,8 @@
-import { fullCards } from '../control/obj-statistic';
 import { objState } from '../control/objs';
 import { root } from '../root/root';
 import { Tags } from '../utils/enums';
+import { IFullCars } from '../utils/interfaces';
+import { TypeOrder } from '../utils/types';
 import { mainStatistic } from './main';
 import { table } from './table';
 import { tbody } from './tbody';
@@ -15,27 +16,29 @@ const cleareField = () => {
   objState.countStatistic = 1;
 };
 
-export const renderStatistic = (): void => {
+export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
   cleareField();
 
   root.append(mainStatistic);
   mainStatistic.append(table);
   table.append(tbody);
   tbody.append(trTitle);
-  renderTitleRow();
+  renderTitleRow(order);
 
-  for (let i = 0; i < fullCards.length; i++) {
+  // console.log(data);
+
+  for (let i = 0; i < data.length; i++) {
     const row = document.createElement(Tags.TR);
     row.className = 'row';
     row.innerHTML += `
       <td class="cell">${i + 1}</td>
-      <td class="cell cell-word">${fullCards[i].category}</td>
-      <td class="cell cell-word">${fullCards[i].word}</td>
-      <td class="cell cell-word">${fullCards[i].translation}</td>
-      <td class="cell">${fullCards[i].train}</td>
-      <td class="cell">${fullCards[i].answers}</td>
-      <td class="cell">${fullCards[i].errors}</td>
-      <td class="cell">${Math.round(fullCards[i].percent)}</td>
+      <td class="cell cell-word">${data[i].category}</td>
+      <td class="cell cell-word">${data[i].word}</td>
+      <td class="cell cell-word">${data[i].translation}</td>
+      <td class="cell">${data[i].train}</td>
+      <td class="cell">${data[i].answers}</td>
+      <td class="cell">${data[i].errors}</td>
+      <td class="cell">${Math.round(data[i].percent)}</td>
     `;
     tbody.append(row);
   }

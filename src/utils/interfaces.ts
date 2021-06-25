@@ -11,6 +11,7 @@ export interface IObjStateApp {
   page: number;
   stateApp: TypeStateApp;
   countStatistic: number;
+  countCards: number;
 }
 
 export interface IHTMLElems {
@@ -27,6 +28,7 @@ export interface IGameState {
 }
 
 export interface IFullCars {
+  number: number;
   category: string;
   word: string;
   translation: string;
