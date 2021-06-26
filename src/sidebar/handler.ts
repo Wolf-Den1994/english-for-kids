@@ -10,24 +10,24 @@ import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { CATEGORY } from '../utils/consts';
-import { ElemClasses, Order } from '../utils/enums';
+import { ElemClasses, NumberPage, Order } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
 import { list, menu, sidebar } from './sidebar';
 
 const handlerMenu = (event: Event) => {
   const target = event.target as HTMLElement;
-  if (checkClass(target, 'menu-link')) {
+  if (checkClass(target, ElemClasses.MENU_LINK)) {
     const index = list.indexOf(target.innerHTML);
     changeActiveLink(target);
     if (index === 0) {
-      objState.page = 0;
+      objState.page = NumberPage.MAIN;
       renderCategory();
     } else if (index <= cards[CATEGORY].length) {
       objState.page = index;
       renderSubject(objState.page);
     } else {
-      objState.page = 9;
+      objState.page = NumberPage.STATISTIC;
       renderStatistic(fullCards, Order.DESC);
     }
     closeSidebar();

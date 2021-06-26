@@ -5,7 +5,7 @@ import { objState } from '../control/objs';
 import { renderFinish } from '../finish/finish';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
-import { Tags } from '../utils/enums';
+import { ElemClasses, IndexSounds, Tags } from '../utils/enums';
 import { getStringWord } from '../utils/get-word';
 import { ICards } from '../utils/interfaces';
 import { sound } from './sound';
@@ -26,26 +26,21 @@ const generateRandom = (page: ICards[]) => {
 };
 
 export const startGame = (elem: HTMLElement): void => {
-  changeClassList(elem, 'btn-start-game', 'repeat');
+  changeClassList(elem, ElemClasses.BTN_START_GAME, ElemClasses.REPEAT);
   const page = cards[objState.page] as ICards[];
   const randomAudios = generateRandom(page);
-  // console.log(page)
-  // console.log(randomAudios)
   objGame.arrAudios = randomAudios;
-  sound(randomAudios[0], 'first');
+  sound(randomAudios[0], IndexSounds.FIRST);
 };
 
 export const gameProcess = (elem: HTMLElement): void => {
   const image = elem as HTMLImageElement;
-  // console.log(image.src, objGame.arrAudios[0]);
   if (objGame.arrAudios.length > 0) {
     const wordImage = getStringWord(image.src);
     const wordAudio = getStringWord(objGame.arrAudios[0]);
-    // console.log(wordAudio, wordImage);
     if (wordImage === wordAudio) {
-      // console.log('начало', objGame.arrAudios);
-      sound(`./audio/correct.mp3`, 'second');
-      addClassList(elem, 'great');
+      sound(`./audio/correct.mp3`, IndexSounds.SECOND);
+      addClassList(elem, ElemClasses.GREAT);
       addStars('win');
       fullCards.forEach((item) => {
         if (item.word === wordImage) {
@@ -58,14 +53,14 @@ export const gameProcess = (elem: HTMLElement): void => {
       objGame.arrAudios.shift();
       if (objGame.arrAudios.length > 0) {
         setTimeout(() => {
-          sound(objGame.arrAudios[0], 'first');
+          sound(objGame.arrAudios[0], IndexSounds.FIRST);
         }, 1000);
       } else {
         renderFinish();
       }
     } else {
       objGame.counterErrors++;
-      sound(`./audio/error.mp3`, 'second');
+      sound(`./audio/error.mp3`, IndexSounds.SECOND);
       addStars('fail');
       fullCards.forEach((item) => {
         if (item.word === wordAudio) {

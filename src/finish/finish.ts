@@ -6,40 +6,40 @@ import { sound } from '../play/sound';
 import { root } from '../root/root';
 import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
-import { Tags } from '../utils/enums';
+import { ElemClasses, IndexSounds, Tags } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 
 const ZERO_ERRORS = 0;
-const TIME_SHOW_FINAL = 5000;
+const TIME_SHOW_FINAL = 2500;
 
 const removeFinal = () => {
   objGame.counterErrors = 0;
-  removeClassList(root, 'hidden');
-  removeClassList(overlay, 'winner');
-  removeClassList(overlay, 'loser');
+  removeClassList(root, ElemClasses.HIDDEN);
+  removeClassList(overlay, ElemClasses.WINNER);
+  removeClassList(overlay, ElemClasses.LOSER);
   overlay.innerHTML = '';
-  removeClassList(document.body, 'hidden');
-  removeClassList(header, 'hidden');
+  removeClassList(document.body, ElemClasses.HIDDEN);
+  removeClassList(header, ElemClasses.HIDDEN);
   objState.page = 0;
   renderCategory();
 };
 
 export const renderFinish = (): void => {
-  addClassList(root, 'hidden');
+  addClassList(root, ElemClasses.HIDDEN);
   if (objGame.counterErrors === ZERO_ERRORS) {
-    addClassList(overlay, 'winner');
-    sound(`./audio/success.mp3`, 'second');
+    addClassList(overlay, ElemClasses.WINNER);
+    sound(`./audio/success.mp3`, IndexSounds.SECOND);
   } else {
-    addClassList(overlay, 'loser');
+    addClassList(overlay, ElemClasses.LOSER);
     const plural = objGame.counterErrors === 1 ? 'error' : 'errors';
     const paragraf = document.createElement(Tags.P);
     paragraf.className = 'final-text';
     paragraf.innerHTML = `${objGame.counterErrors} ${plural}`;
     overlay.append(paragraf);
-    sound(`./audio/failure.mp3`, 'second');
+    sound(`./audio/failure.mp3`, IndexSounds.SECOND);
   }
-  addClassList(document.body, 'hidden');
-  addClassList(header, 'hidden');
+  addClassList(document.body, ElemClasses.HIDDEN);
+  addClassList(header, ElemClasses.HIDDEN);
 
   setTimeout(() => {
     removeFinal();

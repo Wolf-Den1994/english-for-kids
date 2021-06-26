@@ -1,4 +1,5 @@
 import { fullCards } from '../control/obj-statistic';
+import { NAME_LOCALSTORAGE } from '../utils/consts';
 import { Order } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
 import { renderStatistic } from './render-statistic';
@@ -15,6 +16,6 @@ const cleanArr = (arr: IFullCars[]) => {
 
 export const resetStatistic = (): void => {
   cleanArr(fullCards);
-  localStorage.setItem('info', JSON.stringify(fullCards));
+  localStorage.setItem(NAME_LOCALSTORAGE, JSON.stringify(fullCards));
   renderStatistic(fullCards, Order.DESC);
 };

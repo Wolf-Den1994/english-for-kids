@@ -18,9 +18,6 @@ function sortByTitle(arr: IFullCars[], arg: keyof IFullCars, order: TypeOrder) {
 export const sortStatistic = (title: HTMLTableHeaderCellElement): void => {
   sortCards.length = 0;
   const newFullCards = fullCards.slice();
-  // можно не создавать newFullCards и записывать сразу
-  // fullCards тогда результат будет сохранятся всегда
-  // console.log('sort');
 
   if (checkClass(title, 'title-number')) {
     if (checkClass(title, Order.DESC)) {
@@ -34,13 +31,10 @@ export const sortStatistic = (title: HTMLTableHeaderCellElement): void => {
     }
   } else if (checkClass(title, 'title-category')) {
     if (checkClass(title, Order.DESC)) {
-      // console.log('desc');
       sortByTitle(newFullCards, 'category', Order.DESC);
       sortCards.push(...newFullCards);
       renderStatistic(sortCards, Order.ASC);
-      // console.log(title.children[0].innerHTML);
     } else {
-      // console.log('asc');
       sortByTitle(newFullCards, 'category', Order.ASC);
       sortCards.push(...newFullCards);
       renderStatistic(sortCards, Order.DESC);

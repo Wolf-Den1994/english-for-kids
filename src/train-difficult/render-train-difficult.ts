@@ -4,6 +4,7 @@ import { Tags } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
 
 export const copyFullCards: IFullCars[] = [];
+const NUMBER_CARDS_DISPLAYED = 8;
 
 export const renderTrainDifficult = (): void => {
   copyFullCards.length = 0;
@@ -12,7 +13,7 @@ export const renderTrainDifficult = (): void => {
   const arrDifficultWord: IFullCars[] = [];
   copyFullCards.sort((a, b) => (a.errors > b.errors ? -1 : 1));
   copyFullCards.forEach((item) => {
-    if (item.errors > 0 && count !== 8) {
+    if (item.errors > 0 && count !== NUMBER_CARDS_DISPLAYED) {
       arrDifficultWord.push(item);
       count++;
     }

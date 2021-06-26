@@ -15,7 +15,7 @@ import {
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { imgCategories } from '../utils/consts';
-import { ElemClasses } from '../utils/enums';
+import { ElemClasses, IndexSounds, NumberPage, StateApp } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
 import { getWord } from '../utils/get-word';
 import { ICards, IFullCars } from '../utils/interfaces';
@@ -61,13 +61,12 @@ const workWithCards = (
 ) => {
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
-    if (checkClass(parent, 'category')) {
+    if (checkClass(parent, ElemClasses.CATEGOTY)) {
       categotySelection(card);
-    } else if (checkClasses(parent, elem, card, 'subject')) {
+    } else if (checkClasses(parent, elem, card, ElemClasses.SUBJECT)) {
       if (front) {
         const word: string = getWord(front);
         const page = cards[objState.page] as ICards[];
-        // console.log(page)
         fullCards.forEach((item) => {
           if (item.word === word) {
             item.train++;
@@ -90,15 +89,14 @@ const workWithStatistic = (
   title: HTMLTableHeaderCellElement,
 ) => {
   if (title) {
-    // console.log('sort')
     sortStatistic(title);
-  } else if (checkClass(elem, 'btn-reset')) {
+  } else if (checkClass(elem, ElemClasses.BTN_RESET)) {
     resetStatistic();
-  } else if (checkClass(elem, 'btn-diff')) {
+  } else if (checkClass(elem, ElemClasses.BTN_DIFF)) {
     renderTrainDifficult();
   } else {
     const parent = card.parentElement as HTMLDivElement;
-    if (front && checkClasses(parent, elem, card, 'diff')) {
+    if (front && checkClasses(parent, elem, card, ElemClasses.DIFF)) {
       const word: string = getWord(front);
       const audio = <HTMLAudioElement>document.querySelector('.audio');
       const obj = copyFullCards.find((item) => item.word === word) as IFullCars;
@@ -108,31 +106,30 @@ const workWithStatistic = (
 };
 
 const selectionHandler = (event: Event) => {
-  // console.log(event);
   const elems = getArrsElem();
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
   const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
-  if (objState.stateApp === 'train') {
+  if (objState.stateApp === StateApp.TRAIN) {
     workWithCards(elem, card, front);
-    if (objState.page === 9) {
+    if (objState.page === NumberPage.STATISTIC) {
       workWithStatistic(elem, card, front, titleTh);
     }
-  } else if (objState.page === 0) {
+  } else if (objState.page === NumberPage.MAIN) {
     categotySelection(card);
-  } else if (objState.page === 9) {
+  } else if (objState.page === NumberPage.STATISTIC) {
     workWithStatistic(elem, card, front, titleTh);
-  } else if (checkClass(elem, 'btn-start-game')) {
+  } else if (checkClass(elem, ElemClasses.BTN_START_GAME)) {
     startGame(elem);
-  } else if (checkClass(elem, 'repeat')) {
+  } else if (checkClass(elem, ElemClasses.REPEAT)) {
     if (objGame.arrAudios.length > 0) {
-      sound(objGame.arrAudios[0], 'first');
+      sound(objGame.arrAudios[0], IndexSounds.FIRST);
     }
   } else if (
-    checkClass(elem, 'img') &&
-    !checkClass(elems.btnStartGame, 'btn-start-game') &&
-    !checkClass(elem, 'great')
+    checkClass(elem, ElemClasses.IMG) &&
+    !checkClass(elems.btnStartGame, ElemClasses.BTN_START_GAME) &&
+    !checkClass(elem, ElemClasses.GREAT)
   ) {
     gameProcess(elem);
   }

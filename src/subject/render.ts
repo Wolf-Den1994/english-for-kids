@@ -3,7 +3,7 @@ import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
 import { root } from '../root/root';
 import { CATEGORY } from '../utils/consts';
-import { Tags } from '../utils/enums';
+import { StateApp, Tags } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
 
 export const renderSubject = (page: number): void => {
@@ -50,7 +50,7 @@ export const renderSubject = (page: number): void => {
     const reperse = document.createElement(Tags.SVG);
     front.append(reperse);
 
-    if (objState.stateApp === 'train') {
+    if (objState.stateApp === StateApp.TRAIN) {
       img.className = `img ${cards[CATEGORY][index]} image picture`;
       pFront.className = 'text text-font';
       reperse.className = 'svg image-svg';

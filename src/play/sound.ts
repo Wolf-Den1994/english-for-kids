@@ -1,4 +1,6 @@
+import { IndexSounds } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
+import { TypeIndexsSound } from '../utils/types';
 
 export const tone = (audio: HTMLAudioElement, link: string): void => {
   audio.currentTime = 0;
@@ -9,11 +11,11 @@ export const tone = (audio: HTMLAudioElement, link: string): void => {
   }
 };
 
-export const sound = (link: string, index: 'first' | 'second'): void => {
+export const sound = (link: string, index: TypeIndexsSound): void => {
   const audio1 = <HTMLAudioElement>document.querySelector('.audio1');
   const audio2 = <HTMLAudioElement>document.querySelector('.audio2');
 
-  if (index === 'first') {
+  if (index === IndexSounds.FIRST) {
     tone(audio1, link);
   } else {
     tone(audio2, link);
@@ -23,5 +25,5 @@ export const sound = (link: string, index: 'first' | 'second'): void => {
 export const playSound = (page: ICards[], word: string): void => {
   const rightObjWithWord = page.filter((obj) => obj.word === word);
   const link = `${rightObjWithWord[0].audioSrc}`;
-  sound(link, 'first');
+  sound(link, IndexSounds.FIRST);
 };

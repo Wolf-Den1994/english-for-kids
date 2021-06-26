@@ -7,6 +7,5 @@ export const getStringWord = (str: string): string => {
 export const getWord = (div: HTMLDivElement): string => {
   const img = div.children[0] as HTMLImageElement;
   const imageSrc = img.src;
-  // console.log(img, imageSrc)
   return getStringWord(imageSrc);
 };

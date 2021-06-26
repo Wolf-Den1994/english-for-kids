@@ -28,8 +28,6 @@ export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
   tbody.append(trTitle);
   renderTitleRow(order);
 
-  // console.log(data);
-
   for (let i = 0; i < data.length; i++) {
     const row = document.createElement(Tags.TR);
     row.className = 'row';

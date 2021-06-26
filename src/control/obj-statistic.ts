@@ -1,10 +1,10 @@
 import cards from '../cards';
-import { CATEGORY } from '../utils/consts';
+import { CATEGORY, NAME_LOCALSTORAGE } from '../utils/consts';
 import { ICards, IFullCars } from '../utils/interfaces';
 import { objState } from './objs';
 
 export const fullCards: IFullCars[] = [];
-const infoLocal = localStorage.getItem('info');
+const infoLocal = localStorage.getItem(NAME_LOCALSTORAGE);
 if (infoLocal) {
   fullCards.push(...JSON.parse(infoLocal));
 } else {
@@ -31,6 +31,6 @@ if (infoLocal) {
 }
 
 export const dispatchInfo = (info: IFullCars[]): void => {
-  localStorage.setItem('info', JSON.stringify(info));
+  localStorage.setItem(NAME_LOCALSTORAGE, JSON.stringify(info));
 };
 dispatchInfo(fullCards);

@@ -5,6 +5,20 @@ export enum ElemClasses {
   FRONT = 'front',
   SVG = 'svg',
   HOVER = 'hover',
+  ACTIVE = 'active',
+  WINNER = 'winner',
+  LOSER = 'loser',
+  BTN_START_GAME = 'btn-start-game',
+  BTN_RESET = 'btn-reset',
+  BTN_DIFF = 'btn-diff',
+  DIFF = 'diff',
+  CATEGOTY = 'category',
+  SUBJECT = 'subject',
+  PLAY = 'play',
+  REPEAT = 'repeat',
+  IMG = 'img',
+  GREAT = 'great',
+  MENU_LINK = 'menu-link',
 }
 
 export enum Tags {
@@ -38,4 +52,19 @@ export enum Arrow {
 export enum Order {
   ASC = 'asc',
   DESC = 'desc',
+}
+
+export enum StateApp {
+  TRAIN = 'train',
+  PLAY = 'play',
+}
+
+export enum IndexSounds {
+  FIRST = 'first',
+  SECOND = 'second',
+}
+
+export enum NumberPage {
+  MAIN = 0,
+  STATISTIC = 9,
 }
