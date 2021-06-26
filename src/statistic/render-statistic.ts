@@ -3,6 +3,7 @@ import { root } from '../root/root';
 import { Tags } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
 import { TypeOrder } from '../utils/types';
+import { btnDifficultWord, btnReset } from './button';
 import { mainStatistic } from './main';
 import { table } from './table';
 import { tbody } from './tbody';
@@ -20,6 +21,8 @@ export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
   cleareField();
 
   root.append(mainStatistic);
+  mainStatistic.append(btnDifficultWord)
+  mainStatistic.append(btnReset)
   mainStatistic.append(table);
   table.append(tbody);
   tbody.append(trTitle);

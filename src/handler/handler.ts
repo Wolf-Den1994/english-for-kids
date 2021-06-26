@@ -5,6 +5,7 @@ import { objState } from '../control/objs';
 import { gameProcess, startGame } from '../play/game';
 import { playSound, sound } from '../play/sound';
 import { root } from '../root/root';
+import { resetStatistic } from '../statistic/reset';
 import { sortStatistic } from '../statistic/sort';
 import { renderSubject } from '../subject/render';
 import { addClassList } from '../utils/add-class';
@@ -77,7 +78,19 @@ const workWithCards = (
   }
 };
 
-const selectionCard = (event: Event) => {
+const workWithStatistic = (
+  elem: HTMLElement,
+  title: HTMLTableHeaderCellElement,
+) => {
+  if (title) {
+    // console.log('sort')
+    sortStatistic(title);
+  } else if (checkClass(elem, 'btn-reset')) {
+    resetStatistic();
+  }
+};
+
+const selectionHandler = (event: Event) => {
   // console.log(event);
   const elems = getArrsElem();
   const elem = event.target as HTMLElement;
@@ -86,15 +99,13 @@ const selectionCard = (event: Event) => {
   const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
   if (objState.stateApp === 'train') {
     workWithCards(elem, card, front);
-    if (objState.page === 9 && titleTh) {
-      // console.log('sort')
-      sortStatistic(titleTh);
+    if (objState.page === 9) {
+      workWithStatistic(elem, titleTh);
     }
   } else if (objState.page === 0) {
     categotySelection(card);
-  } else if (objState.page === 9 && titleTh) {
-    // console.log('sort')
-    sortStatistic(titleTh);
+  } else if (objState.page === 9) {
+    workWithStatistic(elem, titleTh);
   } else if (checkClass(elem, 'btn-start-game')) {
     startGame(elem);
   } else if (checkClass(elem, 'repeat')) {
@@ -110,4 +121,4 @@ const selectionCard = (event: Event) => {
   }
 };
 
-root.addEventListener('click', selectionCard);
+root.addEventListener('click', selectionHandler);
