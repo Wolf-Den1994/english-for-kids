@@ -16,6 +16,8 @@ if (infoLocal) {
           category: cards[CATEGORY][i - 1],
           word: elem.word,
           translation: elem.translation,
+          image: elem.image,
+          audioSrc: elem.audioSrc,
           train: 0,
           play: 0,
           errors: 0,

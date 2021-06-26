@@ -1,4 +1,4 @@
-import { Arrow, Order, Tags } from '../utils/enums';
+import { Arrow, Tags } from '../utils/enums';
 import { TypeOrder } from '../utils/types';
 
 export const trTitle = document.createElement(Tags.TR);

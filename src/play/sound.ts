@@ -1,6 +1,6 @@
 import { ICards } from '../utils/interfaces';
 
-const tone = (audio: HTMLAudioElement, link: string) => {
+export const tone = (audio: HTMLAudioElement, link: string): void => {
   audio.currentTime = 0;
   audio.src = `./${link}`;
   const playPromise = audio.play();
@@ -10,11 +10,11 @@ const tone = (audio: HTMLAudioElement, link: string) => {
 };
 
 export const sound = (link: string, index: 'first' | 'second'): void => {
-  const audio = <HTMLAudioElement>document.querySelector('.audio1');
+  const audio1 = <HTMLAudioElement>document.querySelector('.audio1');
   const audio2 = <HTMLAudioElement>document.querySelector('.audio2');
 
   if (index === 'first') {
-    tone(audio, link);
+    tone(audio1, link);
   } else {
     tone(audio2, link);
   }

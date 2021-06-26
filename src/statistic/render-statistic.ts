@@ -21,8 +21,8 @@ export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
   cleareField();
 
   root.append(mainStatistic);
-  mainStatistic.append(btnDifficultWord)
-  mainStatistic.append(btnReset)
+  mainStatistic.append(btnDifficultWord);
+  mainStatistic.append(btnReset);
   mainStatistic.append(table);
   table.append(tbody);
   tbody.append(trTitle);

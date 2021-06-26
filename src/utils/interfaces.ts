@@ -32,6 +32,8 @@ export interface IFullCars {
   category: string;
   word: string;
   translation: string;
+  image: string;
+  audioSrc: string;
   train: number;
   play: number;
   errors: number;

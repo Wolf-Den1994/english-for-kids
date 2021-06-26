@@ -1,6 +1,6 @@
 import { fullCards } from '../control/obj-statistic';
 import { checkClass } from '../utils/check-class';
-import { Arrow, Order } from '../utils/enums';
+import { Order } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
 import { TypeOrder } from '../utils/types';
 import { renderStatistic } from './render-statistic';
@@ -38,7 +38,7 @@ export const sortStatistic = (title: HTMLTableHeaderCellElement): void => {
       sortByTitle(newFullCards, 'category', Order.DESC);
       sortCards.push(...newFullCards);
       renderStatistic(sortCards, Order.ASC);
-      console.log(title.children[0].innerHTML)
+      // console.log(title.children[0].innerHTML);
     } else {
       // console.log('asc');
       sortByTitle(newFullCards, 'category', Order.ASC);
