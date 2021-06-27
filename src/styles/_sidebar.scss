@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: $color-aquamarine;
+  background-color: $color-auxiliary;
   position: absolute;
   left: 0;
   width: 290px;
@@ -21,7 +21,7 @@
 
     &-link {
       text-decoration: none;
-      color: $color-dark-gray;
+      color: $color-main;
       margin-bottom: 24px;
       font-size: 20px;
       position: relative;
@@ -30,11 +30,11 @@
       width: fit-content;
 
       &.active {
-        color: $color-green-active;
+        color: $color-additional-active;
       }
 
       &:hover {
-        color: $color-green;
+        color: $color-additional;
         transition: color 0.3s ease-out;
       }
 
@@ -44,7 +44,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: $color-green;
+        background-color: $color-additional;
         content: "";
         transition: width 0.3s ease-out;
       }

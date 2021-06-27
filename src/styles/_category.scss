@@ -8,7 +8,7 @@
     max-width: 300px;
     width: 100%;
     height: 250px;
-    border: 1px solid $color-light-gray;
+    border: 1px solid $color-border-card;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     img {
       width: 100%;
       height: 200px;
-      border: 4px solid $color-white;
+      border: 4px solid $color-main;
       object-fit: cover;
       margin: 0 auto 10px;
       border-radius: 10px;

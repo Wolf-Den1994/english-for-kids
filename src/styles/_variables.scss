@@ -1,12 +1,12 @@
-$color-white: #fff;
-$color-green: #3ac211;
-$color-green-active: #a0b302;
-$color-aquamarine: #7fffd4;
-$color-gray: #999;
-$color-dark-gray: #616161;
-$color-light-gray: #bbb;
+$color-main: #fff;
+$color-additional: #ffa86b;
+$color-additional-active: #9bffa3;
+$color-auxiliary: #a347bd;
+$color-btn-sidebar-hover: #999;
+$color-text: #616161;
+$color-border-card: #bbb;
 $color-shadow: #00000040;
-$font: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+$font: "Roboto", "Franklin Gothic Medium", "Arial Narrow", "Arial", sans-serif;
 
 @mixin button() {
   outline: none;
