@@ -1,6 +1,6 @@
 import { renderCategory } from '../category/category';
 import { objGame } from '../control/obj-game';
-import { objState } from '../control/objs';
+import { objApp } from '../control/objs';
 import { header } from '../header/header';
 import { sound } from '../play/sound';
 import { root } from '../root/root';
@@ -20,7 +20,7 @@ const removeFinal = () => {
   overlay.innerHTML = '';
   removeClassList(document.body, ElemClasses.HIDDEN);
   removeClassList(header, ElemClasses.HIDDEN);
-  objState.page = 0;
+  objApp.page = 0;
   renderCategory();
 };
 

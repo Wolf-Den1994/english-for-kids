@@ -1,7 +1,7 @@
 import cards from '../cards';
 import { CATEGORY, NAME_LOCALSTORAGE } from '../utils/consts';
 import { ICards, IFullCars } from '../utils/interfaces';
-import { objState } from './objs';
+import { objApp } from './objs';
 
 export const fullCards: IFullCars[] = [];
 const infoLocal = localStorage.getItem(NAME_LOCALSTORAGE);
@@ -12,7 +12,7 @@ if (infoLocal) {
     cards[i].forEach((elem: string | ICards) => {
       if (typeof elem === 'object') {
         fullCards.push({
-          number: objState.countCards,
+          number: objApp.countCards,
           category: cards[CATEGORY][i - 1],
           word: elem.word,
           translation: elem.translation,
@@ -25,7 +25,7 @@ if (infoLocal) {
           percent: 0,
         });
       }
-      objState.countCards++;
+      objApp.countCards++;
     });
   }
 }

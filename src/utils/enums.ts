@@ -67,4 +67,5 @@ export enum IndexSounds {
 export enum NumberPage {
   MAIN = 0,
   STATISTIC = 9,
+  DIFFICULT = 10,
 }

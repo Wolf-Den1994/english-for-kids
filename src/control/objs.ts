@@ -1,6 +1,6 @@
 import { IObjApplication } from '../utils/interfaces';
 
-export const objState: IObjApplication = {
+export const objApp: IObjApplication = {
   page: 0,
   countStatistic: 1,
   countCards: 1,

@@ -1,9 +1,9 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { dispatchInfo, fullCards } from '../control/obj-statistic';
-import { objState } from '../control/objs';
+import { objApp } from '../control/objs';
 import { gameProcess, startGame } from '../play/game';
-import { playSound, sound, tone } from '../play/sound';
+import { playSound, sound } from '../play/sound';
 import { root } from '../root/root';
 import { resetStatistic } from '../statistic/reset';
 import { sortStatistic } from '../statistic/sort';
@@ -50,7 +50,7 @@ const addListener = (card: HTMLDivElement) => {
 const categotySelection = (card: HTMLDivElement) => {
   const word: string = getWord(card);
   const index = imgCategories.indexOf(word) + 1;
-  objState.page = index;
+  objApp.page = index;
   changeActiveLink(index);
   renderSubject(index);
 };
@@ -67,7 +67,7 @@ const workWithCards = (
     } else if (checkClasses(parent, elem, card, ElemClasses.SUBJECT)) {
       if (front) {
         const word: string = getWord(front);
-        const page = cards[objState.page] as ICards[];
+        const page = cards[objApp.page] as ICards[];
         fullCards.forEach((item) => {
           if (item.word === word) {
             item.train++;
@@ -85,8 +85,6 @@ const workWithCards = (
 
 const workWithStatistic = (
   elem: HTMLElement,
-  card: HTMLDivElement,
-  front: HTMLDivElement,
   title: HTMLTableHeaderCellElement,
 ) => {
   if (title) {
@@ -95,15 +93,13 @@ const workWithStatistic = (
     resetStatistic();
   } else if (checkClass(elem, ElemClasses.BTN_DIFF)) {
     renderTrainDifficult();
-  } else {
-    const parent = card.parentElement as HTMLDivElement;
-    if (front && checkClasses(parent, elem, card, ElemClasses.DIFF)) {
-      const word: string = getWord(front);
-      const audio = <HTMLAudioElement>document.querySelector('.audio');
-      const obj = copyFullCards.find((item) => item.word === word) as IFullCars;
-      tone(audio, obj.audioSrc);
-    }
   }
+};
+
+const workWithDiffTrain = (front: HTMLDivElement) => {
+  const word: string = getWord(front);
+  const obj = copyFullCards.find((item) => item.word === word) as IFullCars;
+  sound(obj.audioSrc, IndexSounds.FIRST);
 };
 
 const selectionHandler = (event: Event) => {
@@ -114,13 +110,15 @@ const selectionHandler = (event: Event) => {
   const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
   if (store.getState().value === StateApp.TRAIN) {
     workWithCards(elem, card, front);
-    if (objState.page === NumberPage.STATISTIC) {
-      workWithStatistic(elem, card, front, titleTh);
+    if (objApp.page === NumberPage.STATISTIC) {
+      workWithStatistic(elem, titleTh);
+    } else if (objApp.page === NumberPage.DIFFICULT) {
+      workWithDiffTrain(front);
     }
-  } else if (objState.page === NumberPage.MAIN) {
+  } else if (objApp.page === NumberPage.MAIN) {
     categotySelection(card);
-  } else if (objState.page === NumberPage.STATISTIC) {
-    workWithStatistic(elem, card, front, titleTh);
+  } else if (objApp.page === NumberPage.STATISTIC) {
+    workWithStatistic(elem, titleTh);
   } else if (checkClass(elem, ElemClasses.BTN_START_GAME)) {
     startGame(elem);
   } else if (checkClass(elem, ElemClasses.REPEAT)) {

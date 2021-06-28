@@ -1,4 +1,4 @@
-import { objState } from '../control/objs';
+import { objApp } from '../control/objs';
 import { root } from '../root/root';
 import { Tags } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
@@ -14,7 +14,7 @@ const cleareField = () => {
   tbody.innerHTML = '';
   table.innerHTML = '';
   trTitle.innerHTML = '';
-  objState.countStatistic = 1;
+  objApp.countStatistic = 1;
 };
 
 export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {

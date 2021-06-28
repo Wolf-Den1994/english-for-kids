@@ -1,8 +1,9 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { dispatchInfo, fullCards } from '../control/obj-statistic';
-import { objState } from '../control/objs';
+import { objApp } from '../control/objs';
 import { renderFinish } from '../finish/finish';
+import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
 import { ElemClasses, IndexSounds, Tags } from '../utils/enums';
@@ -27,10 +28,16 @@ const generateRandom = (page: ICards[]) => {
 
 export const startGame = (elem: HTMLElement): void => {
   changeClassList(elem, ElemClasses.BTN_START_GAME, ElemClasses.REPEAT);
-  const page = cards[objState.page] as ICards[];
-  const randomAudios = generateRandom(page);
-  objGame.arrAudios = randomAudios;
-  sound(randomAudios[0], IndexSounds.FIRST);
+  if (objApp.page === 10) {
+    const randomAudios = generateRandom(arrDifficultWord);
+    objGame.arrAudios = randomAudios;
+    sound(randomAudios[0], IndexSounds.FIRST);
+  } else {
+    const page = cards[objApp.page] as ICards[];
+    const randomAudios = generateRandom(page);
+    objGame.arrAudios = randomAudios;
+    sound(randomAudios[0], IndexSounds.FIRST);
+  }
 };
 
 export const gameProcess = (elem: HTMLElement): void => {

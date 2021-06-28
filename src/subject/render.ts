@@ -4,30 +4,38 @@ import { root } from '../root/root';
 import { store } from '../store/store';
 import { CATEGORY } from '../utils/consts';
 import { StateApp, Tags } from '../utils/enums';
-import { ICards } from '../utils/interfaces';
+import { ICards, IFullCars } from '../utils/interfaces';
 
-export const renderSubject = (page: number): void => {
+export const cleanField = (): void => {
   objGame.counterErrors = 0;
-  const index = page - 1;
   root.innerHTML = '';
+};
 
+export const render = (
+  layout: string,
+  pageNumber: number,
+  arrCards: ICards[] | IFullCars[],
+): void => {
   const title = document.createElement(Tags.TITLE2);
   title.className = 'title';
-  title.innerHTML = cards[CATEGORY][index];
+  title.innerHTML =
+    layout === 'subject'
+      ? cards[CATEGORY][pageNumber]
+      : 'Train difficult words';
   root.append(title);
 
   const score = document.createElement(Tags.DIV);
   score.className = 'score';
   root.append(score);
 
-  const subject = document.createElement(Tags.DIV);
-  subject.className = 'subject';
-  root.append(subject);
+  const general = document.createElement(Tags.DIV);
+  general.className = layout === 'subject' ? 'subject' : 'diff';
+  root.append(general);
 
-  for (let i = 0; i < cards[index + 1].length; i++) {
+  for (let i = 0; i < arrCards.length; i++) {
     const card = document.createElement(Tags.DIV);
     card.className = 'main-card';
-    subject.append(card);
+    general.append(card);
 
     const flipper = document.createElement(Tags.DIV);
     flipper.className = 'flipper';
@@ -38,9 +46,9 @@ export const renderSubject = (page: number): void => {
     flipper.append(front);
 
     const img = document.createElement(Tags.IMG);
-    const objCard = cards[index + 1][i] as ICards;
-    img.src = `${objCard.image}`;
-    img.alt = `${objCard.word}`;
+    const objCard = arrCards[i] as IFullCars;
+    img.src = `${arrCards[i].image}`;
+    img.alt = `${arrCards[i].word}`;
     front.append(img);
 
     const pFront = document.createElement(Tags.P);
@@ -51,11 +59,11 @@ export const renderSubject = (page: number): void => {
     front.append(reperse);
 
     if (store.getState().value === StateApp.TRAIN) {
-      img.className = `img ${cards[CATEGORY][index]} image picture`;
+      img.className = `img image picture`;
       pFront.className = 'text text-font';
       reperse.className = 'svg image-svg';
     } else {
-      img.className = `img ${cards[CATEGORY][index]} image picture play`;
+      img.className = `img image picture play`;
       pFront.className = 'text text-font play';
       reperse.className = 'svg image-svg play';
     }
@@ -78,11 +86,11 @@ export const renderSubject = (page: number): void => {
 
   const audio1 = document.createElement(Tags.AUDIO);
   audio1.className = 'audio1';
-  subject.append(audio1);
+  general.append(audio1);
 
   const audio2 = document.createElement(Tags.AUDIO);
   audio2.className = 'audio2';
-  subject.append(audio2);
+  general.append(audio2);
 
   const btnStartGame = document.createElement(Tags.BUTTON);
   btnStartGame.className =
@@ -91,4 +99,11 @@ export const renderSubject = (page: number): void => {
       : 'btn btn-start-game';
   btnStartGame.innerHTML = 'Start game';
   root.append(btnStartGame);
+};
+
+export const renderSubject = (page: number): void => {
+  const index = page - 1;
+  cleanField();
+
+  render('subject', index, cards[index + 1] as ICards[]);
 };
