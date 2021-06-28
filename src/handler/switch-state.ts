@@ -11,7 +11,7 @@ import { getArrsElem } from '../utils/get-elems';
 import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 
-const isPageCategory = () => {
+const isPageCategory = (): boolean => {
   if (
     objApp.page !== NumberPage.MAIN &&
     objApp.page !== NumberPage.STATISTIC &&
@@ -22,7 +22,10 @@ const isPageCategory = () => {
   return false;
 };
 
-const changeStateOnTrain = (arr: IFullCars[] | ICards[], elems: IHTMLElems) => {
+const changeStateOnTrain = (
+  arr: IFullCars[] | ICards[],
+  elems: IHTMLElems,
+): void => {
   store.getState().value = StateApp.TRAIN;
   elems.score.innerHTML = '';
   objGame.counterErrors = 0;
@@ -40,7 +43,10 @@ const changeStateOnTrain = (arr: IFullCars[] | ICards[], elems: IHTMLElems) => {
   }
 };
 
-const changeStateOnPlay = (arr: IFullCars[] | ICards[], elems: IHTMLElems) => {
+const changeStateOnPlay = (
+  arr: IFullCars[] | ICards[],
+  elems: IHTMLElems,
+): void => {
   store.getState().value = StateApp.PLAY;
   removeClassList(elems.btnStartGame, ElemClasses.PLAY);
   for (let i = 0; i < arr.length; i++) {
@@ -50,7 +56,7 @@ const changeStateOnPlay = (arr: IFullCars[] | ICards[], elems: IHTMLElems) => {
   }
 };
 
-const switchState = () => {
+const switchState = (): void => {
   const elems = getArrsElem();
   if (input.checked === true) {
     if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {

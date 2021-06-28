@@ -1,18 +1,19 @@
 import { renderCategory } from '../category/category';
 import { objGame } from '../control/obj-game';
 import { objApp } from '../control/objs';
+import { changeActiveLink } from '../handler/links-active';
 import { header } from '../header/header';
 import { sound } from '../play/sound';
 import { root } from '../root/root';
 import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
-import { ElemClasses, IndexSounds, Tags } from '../utils/enums';
+import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 
 const ZERO_ERRORS = 0;
 const TIME_SHOW_FINAL = 2500;
 
-const removeFinal = () => {
+const removeFinal = (): void => {
   objGame.counterErrors = 0;
   removeClassList(root, ElemClasses.HIDDEN);
   removeClassList(overlay, ElemClasses.WINNER);
@@ -21,6 +22,7 @@ const removeFinal = () => {
   removeClassList(document.body, ElemClasses.HIDDEN);
   removeClassList(header, ElemClasses.HIDDEN);
   objApp.page = 0;
+  changeActiveLink(NumberPage.MAIN);
   renderCategory();
 };
 

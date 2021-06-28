@@ -5,7 +5,7 @@ import { play, train } from './actions';
 
 export const store = createStore(rootReducer);
 
-const switchState = () => {
+const switchState = (): void => {
   if (input.checked === true) {
     store.dispatch(train());
   } else {

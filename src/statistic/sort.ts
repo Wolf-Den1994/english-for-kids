@@ -7,7 +7,11 @@ import { renderStatistic } from './render-statistic';
 
 export const sortCards: IFullCars[] = [];
 
-function sortByTitle(arr: IFullCars[], arg: keyof IFullCars, order: TypeOrder) {
+function sortByTitle(
+  arr: IFullCars[],
+  arg: keyof IFullCars,
+  order: TypeOrder,
+): void {
   if (order === Order.ASC) {
     arr.sort((a, b) => (a[arg] > b[arg] ? 1 : -1));
   } else {

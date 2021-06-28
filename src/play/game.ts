@@ -11,14 +11,14 @@ import { getStringWord } from '../utils/get-word';
 import { ICards } from '../utils/interfaces';
 import { sound } from './sound';
 
-const addStars = (nameClass: string) => {
+const addStars = (nameClass: string): void => {
   const score = <HTMLDivElement>document.querySelector('.score');
   const star = document.createElement(Tags.SPAN);
   star.className = `star ${nameClass}`;
   score.append(star);
 };
 
-const generateRandom = (page: ICards[]) => {
+const generateRandom = (page: ICards[]): string[] => {
   const arrAudios: string[] = [];
   for (let i = 0; i < page.length; i++) {
     arrAudios.push(page[i].audioSrc);

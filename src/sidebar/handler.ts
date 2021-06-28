@@ -15,7 +15,7 @@ import { removeClassList } from '../utils/remove-class';
 import { updateClassList } from '../utils/update-class';
 import { list, menu, sidebar } from './sidebar';
 
-const handlerMenu = (event: Event) => {
+const handlerMenu = (event: Event): void => {
   const target = event.target as HTMLElement;
   if (checkClass(target, ElemClasses.MENU_LINK)) {
     const index = list.indexOf(target.innerHTML);
@@ -34,7 +34,7 @@ const handlerMenu = (event: Event) => {
   }
 };
 
-const handlerSideBar = (event: Event) => {
+const handlerSideBar = (event: Event): void => {
   event.preventDefault();
   if (checkClass(sidebar, ElemClasses.HIDDEN)) {
     openSidebar();
@@ -43,7 +43,7 @@ const handlerSideBar = (event: Event) => {
   }
 };
 
-function openSidebar() {
+function openSidebar(): void {
   input.checked = true;
   updateClassList(label, sidebar, ElemClasses.HIDDEN);
   addClassList(overlay, ElemClasses.HIDDEN);
@@ -52,7 +52,7 @@ function openSidebar() {
   menu.addEventListener('click', handlerMenu);
 }
 
-function closeSidebar() {
+function closeSidebar(): void {
   input.checked = false;
   updateClassList(sidebar, label, ElemClasses.HIDDEN);
   removeClassList(overlay, ElemClasses.HIDDEN);

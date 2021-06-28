@@ -39,7 +39,7 @@ const checkClasses = (
   return false;
 };
 
-const addListener = (card: HTMLDivElement) => {
+const addListener = (card: HTMLDivElement): void => {
   const flipBack = function flipBackCard() {
     removeClassList(card, ElemClasses.HOVER);
     card.removeEventListener('mouseleave', flipBack);
@@ -47,7 +47,7 @@ const addListener = (card: HTMLDivElement) => {
   card.addEventListener('mouseleave', flipBack);
 };
 
-const categotySelection = (card: HTMLDivElement) => {
+const categotySelection = (card: HTMLDivElement): void => {
   const word: string = getWord(card);
   const index = imgCategories.indexOf(word) + 1;
   objApp.page = index;
@@ -59,7 +59,7 @@ const workWithCards = (
   elem: HTMLElement,
   card: HTMLDivElement,
   front: HTMLDivElement,
-) => {
+): void => {
   if (card) {
     const parent = card.parentElement as HTMLDivElement;
     if (checkClass(parent, ElemClasses.CATEGOTY)) {
@@ -86,7 +86,7 @@ const workWithCards = (
 const workWithStatistic = (
   elem: HTMLElement,
   title: HTMLTableHeaderCellElement,
-) => {
+): void => {
   if (title) {
     sortStatistic(title);
   } else if (checkClass(elem, ElemClasses.BTN_RESET)) {
@@ -96,13 +96,13 @@ const workWithStatistic = (
   }
 };
 
-const workWithDiffTrain = (front: HTMLDivElement) => {
+const workWithDiffTrain = (front: HTMLDivElement): void => {
   const word: string = getWord(front);
   const obj = copyFullCards.find((item) => item.word === word) as IFullCars;
   sound(obj.audioSrc, IndexSounds.FIRST);
 };
 
-const selectionHandler = (event: Event) => {
+const selectionHandler = (event: Event): void => {
   const elems = getArrsElem();
   const elem = event.target as HTMLElement;
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
