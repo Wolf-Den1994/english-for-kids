@@ -112,7 +112,7 @@ const selectionHandler = (event: Event) => {
     workWithCards(elem, card, front);
     if (objApp.page === NumberPage.STATISTIC) {
       workWithStatistic(elem, titleTh);
-    } else if (objApp.page === NumberPage.DIFFICULT) {
+    } else if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
       workWithDiffTrain(front);
     }
   } else if (objApp.page === NumberPage.MAIN) {

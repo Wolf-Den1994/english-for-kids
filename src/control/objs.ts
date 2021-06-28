@@ -4,4 +4,5 @@ export const objApp: IObjApplication = {
   page: 0,
   countStatistic: 1,
   countCards: 1,
+  empryDifficult: true,
 };

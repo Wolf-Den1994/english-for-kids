@@ -27,8 +27,10 @@ export const renderTrainDifficult = (): void => {
   cleanField();
 
   if (count > 0) {
+    objApp.empryDifficult = false;
     render('difficult', NumberPage.DIFFICULT, arrDifficultWord);
   } else {
+    objApp.empryDifficult = true;
     const diffDiv = document.createElement(Tags.DIV);
     diffDiv.className = 'diff';
     root.append(diffDiv);

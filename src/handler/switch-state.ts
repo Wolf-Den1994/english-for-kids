@@ -53,14 +53,14 @@ const changeStateOnPlay = (arr: IFullCars[] | ICards[], elems: IHTMLElems) => {
 const switchState = () => {
   const elems = getArrsElem();
   if (input.checked === true) {
-    if (objApp.page === NumberPage.DIFFICULT) {
+    if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
       changeStateOnTrain(arrDifficultWord, elems);
     }
     if (isPageCategory()) {
       changeStateOnTrain(cards[objApp.page] as ICards[], elems);
     }
   } else {
-    if (objApp.page === NumberPage.DIFFICULT) {
+    if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
       changeStateOnPlay(arrDifficultWord, elems);
     }
     if (isPageCategory()) {
