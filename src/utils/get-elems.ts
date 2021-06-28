@@ -5,6 +5,7 @@ export const getArrsElem = (): IHTMLElems => {
   const parags = document.querySelectorAll('.text-font');
   const images = document.querySelectorAll('.image');
   const btnStartGame = document.querySelector('.btn') as HTMLButtonElement;
+  const score = document.querySelector('.score') as HTMLDivElement;
 
   const arrSvgs: HTMLElement[] = Array.prototype.slice.call(svgs);
   const arrParags: HTMLParagraphElement[] = Array.prototype.slice.call(parags);
@@ -15,5 +16,6 @@ export const getArrsElem = (): IHTMLElems => {
     arrParags,
     arrImages,
     btnStartGame,
+    score,
   };
 };

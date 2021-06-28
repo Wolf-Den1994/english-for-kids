@@ -1,6 +1,5 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
-import { objState } from '../control/objs';
 import { root } from '../root/root';
 import { store } from '../store/store';
 import { CATEGORY } from '../utils/consts';

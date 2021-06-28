@@ -1,13 +1,17 @@
-import { PLAY, TRAIN } from './redux-types';
+import { StateApp } from '../utils/enums';
 
-export function train() {
+interface ITypeState {
+  type: string;
+}
+
+export function train(): ITypeState {
   return {
-    type: TRAIN,
+    type: StateApp.TRAIN,
   };
 }
 
-export function play() {
+export function play(): ITypeState {
   return {
-    type: PLAY,
+    type: StateApp.TRAIN,
   };
 }

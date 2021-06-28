@@ -1,6 +1,6 @@
-import { IGameState } from '../utils/interfaces';
+import { IGameField } from '../utils/interfaces';
 
-export const objGame: IGameState = {
+export const objGame: IGameField = {
   arrAudios: [],
   arrImages: [],
   counterErrors: 0,

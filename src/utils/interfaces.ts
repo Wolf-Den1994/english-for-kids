@@ -1,5 +1,3 @@
-import { TypeStateApp } from './types';
-
 export interface ICards {
   word: string;
   translation: string;
@@ -7,7 +5,7 @@ export interface ICards {
   audioSrc: string;
 }
 
-export interface IObjStateApp {
+export interface IObjApplication {
   page: number;
   countStatistic: number;
   countCards: number;
@@ -18,9 +16,10 @@ export interface IHTMLElems {
   arrParags: HTMLParagraphElement[];
   arrImages: HTMLImageElement[];
   btnStartGame: HTMLButtonElement;
+  score: HTMLDivElement;
 }
 
-export interface IGameState {
+export interface IGameField {
   arrAudios: string[];
   arrImages: string[];
   counterErrors: number;
