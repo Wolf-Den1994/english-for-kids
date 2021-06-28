@@ -7,6 +7,7 @@ import { playSound, sound, tone } from '../play/sound';
 import { root } from '../root/root';
 import { resetStatistic } from '../statistic/reset';
 import { sortStatistic } from '../statistic/sort';
+import { store } from '../store/store';
 import { renderSubject } from '../subject/render';
 import {
   copyFullCards,
@@ -111,7 +112,7 @@ const selectionHandler = (event: Event) => {
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
   const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
-  if (objState.stateApp === StateApp.TRAIN) {
+  if (store.getState().value === StateApp.TRAIN) {
     workWithCards(elem, card, front);
     if (objState.page === NumberPage.STATISTIC) {
       workWithStatistic(elem, card, front, titleTh);

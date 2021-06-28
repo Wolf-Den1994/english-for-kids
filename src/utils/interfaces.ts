@@ -9,7 +9,6 @@ export interface ICards {
 
 export interface IObjStateApp {
   page: number;
-  stateApp: TypeStateApp;
   countStatistic: number;
   countCards: number;
 }

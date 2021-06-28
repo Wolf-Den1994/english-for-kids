@@ -1,6 +1,7 @@
 import cards from '../cards';
 import { objState } from '../control/objs';
 import { input } from '../header/switcher';
+import { store } from '../store/store';
 import { addClassList } from '../utils/add-class';
 import { ElemClasses, NumberPage, StateApp } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
@@ -9,7 +10,7 @@ import { removeClassList } from '../utils/remove-class';
 const switchState = () => {
   const elems = getArrsElem();
   if (input.checked === true) {
-    objState.stateApp = StateApp.TRAIN;
+    store.getState().value = StateApp.TRAIN;
     if (objState.page !== 0 && objState.page !== NumberPage.STATISTIC) {
       addClassList(elems.btnStartGame, ElemClasses.PLAY);
       for (let i = 0; i < cards[objState.page].length; i++) {
@@ -19,7 +20,7 @@ const switchState = () => {
       }
     }
   } else {
-    objState.stateApp = StateApp.PLAY;
+    store.getState().value = StateApp.PLAY;
     if (objState.page !== 0 && objState.page !== NumberPage.STATISTIC) {
       removeClassList(elems.btnStartGame, ElemClasses.PLAY);
       for (let i = 0; i < cards[objState.page].length; i++) {

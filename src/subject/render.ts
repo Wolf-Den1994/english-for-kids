@@ -2,6 +2,7 @@ import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { objState } from '../control/objs';
 import { root } from '../root/root';
+import { store } from '../store/store';
 import { CATEGORY } from '../utils/consts';
 import { StateApp, Tags } from '../utils/enums';
 import { ICards } from '../utils/interfaces';
@@ -50,7 +51,7 @@ export const renderSubject = (page: number): void => {
     const reperse = document.createElement(Tags.SVG);
     front.append(reperse);
 
-    if (objState.stateApp === StateApp.TRAIN) {
+    if (store.getState().value === StateApp.TRAIN) {
       img.className = `img ${cards[CATEGORY][index]} image picture`;
       pFront.className = 'text text-font';
       reperse.className = 'svg image-svg';
@@ -86,7 +87,7 @@ export const renderSubject = (page: number): void => {
 
   const btnStartGame = document.createElement(Tags.BUTTON);
   btnStartGame.className =
-    objState.stateApp === 'train'
+    store.getState().value === StateApp.TRAIN
       ? 'btn btn-start-game play'
       : 'btn btn-start-game';
   btnStartGame.innerHTML = 'Start game';

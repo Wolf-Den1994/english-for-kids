@@ -67,7 +67,8 @@
       }
 
       &.great {
-        filter: hue-rotate(90deg) sepia(0.9);
+        filter: blur(5px);
+        opacity: 0.5;
       }
     }
 
