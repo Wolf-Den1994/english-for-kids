@@ -29,7 +29,7 @@ body {
   right: 0;
   bottom: 0;
   pointer-events: none;
-  background-color: #0000003f;
+  background-color: $color-overlay-background;
   z-index: 2;
 
   &.hidden {

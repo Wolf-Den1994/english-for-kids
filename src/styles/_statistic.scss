@@ -13,12 +13,12 @@
     margin: 10px 0;
     width: 100%;
     font-size: 16px;
-    box-shadow: 3px 3px 10px 0 #00000030;
+    box-shadow: 3px 3px 10px 0 $color-shadow;
 
     .table-body {
       th,
       td {
-        border: 1px solid #1c2a92;
+        border: 1px solid $color-auxiliary;
         padding: 5px;
         text-align: center;
       }
@@ -26,12 +26,12 @@
       th {
         cursor: pointer;
         padding: 10px 5px;
-        background-color: #bac741;
+        background-color: $color-additional;
       }
 
       td {
         padding: 5px;
-        background-color: #ccccd1;
+        background-color: $color-border-card;
       }
     }
   }

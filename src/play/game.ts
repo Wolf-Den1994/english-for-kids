@@ -6,9 +6,9 @@ import { renderFinish } from '../finish/finish';
 import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
-import { ElemClasses, IndexSounds, Tags } from '../utils/enums';
+import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { getStringWord } from '../utils/get-word';
-import { ICards } from '../utils/interfaces';
+import { ICards, IFullCars } from '../utils/interfaces';
 import { sound } from './sound';
 
 const addStars = (nameClass: string): void => {
@@ -26,18 +26,26 @@ const generateRandom = (page: ICards[]): string[] => {
   return arrAudios.sort(() => Math.random() - 0.5);
 };
 
+const playingArrOfSounds = (arrSounds: string[]) => {
+  objGame.arrAudios = arrSounds;
+  sound(arrSounds[0], IndexSounds.FIRST);
+};
+
 export const startGame = (elem: HTMLElement): void => {
   changeClassList(elem, ElemClasses.BTN_START_GAME, ElemClasses.REPEAT);
-  if (objApp.page === 10) {
+  if (objApp.page === NumberPage.DIFFICULT) {
     const randomAudios = generateRandom(arrDifficultWord);
-    objGame.arrAudios = randomAudios;
-    sound(randomAudios[0], IndexSounds.FIRST);
+    playingArrOfSounds(randomAudios);
   } else {
     const page = cards[objApp.page] as ICards[];
     const randomAudios = generateRandom(page);
-    objGame.arrAudios = randomAudios;
-    sound(randomAudios[0], IndexSounds.FIRST);
+    playingArrOfSounds(randomAudios);
   }
+};
+
+const addAnswers = (item: IFullCars) => {
+  item.answers++;
+  item.percent = (item.play / item.answers) * 100;
 };
 
 export const gameProcess = (elem: HTMLElement): void => {
@@ -52,8 +60,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       fullCards.forEach((item) => {
         if (item.word === wordImage) {
           item.play++;
-          item.answers++;
-          item.percent = (item.play / item.answers) * 100;
+          addAnswers(item);
         }
       });
       dispatchInfo(fullCards);
@@ -72,8 +79,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       fullCards.forEach((item) => {
         if (item.word === wordAudio) {
           item.errors++;
-          item.answers++;
-          item.percent = (item.play / item.answers) * 100;
+          addAnswers(item);
         }
       });
       dispatchInfo(fullCards);
