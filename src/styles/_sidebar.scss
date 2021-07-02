@@ -5,10 +5,11 @@
   width: 290px;
   padding: 100px 0 0 50px;
   top: 0;
-  height: 10000px;
+  height: 100%;
   transition: all 0.3s linear;
   z-index: 3;
   opacity: 1;
+  overflow-y: auto;
 
   &.hidden {
     transform: translateX(-300px);
