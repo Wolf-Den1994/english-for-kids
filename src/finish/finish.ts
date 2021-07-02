@@ -1,10 +1,11 @@
 import { renderCategory } from '../category/category';
 import { objGame } from '../control/obj-game';
-import { objApp } from '../control/objs';
 import { changeActiveLink } from '../handler/links-active';
 import { header } from '../header/header';
 import { sound } from '../play/sound';
 import { root } from '../root/root';
+import { changePage } from '../store/actions';
+import { store } from '../store/store';
 import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
 import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
@@ -21,7 +22,7 @@ const removeFinal = (): void => {
   overlay.innerHTML = '';
   removeClassList(document.body, ElemClasses.HIDDEN);
   removeClassList(header, ElemClasses.HIDDEN);
-  objApp.page = 0;
+  store.dispatch(changePage(NumberPage.MAIN));
   changeActiveLink(NumberPage.MAIN);
   renderCategory();
 };

@@ -1,17 +1,19 @@
-import { StateApp } from '../utils/enums';
+import { NumberPage } from '../utils/enums';
+import { TypeStateApp } from '../utils/types';
+import { CHANGE_MODE, CHANGE_PAGE } from './action-types';
 
 interface ITypeState {
   type: string;
+  mode?: TypeStateApp;
+  page?: NumberPage;
 }
 
-export function train(): ITypeState {
-  return {
-    type: StateApp.TRAIN,
-  };
-}
+export const changeMode = (mode: TypeStateApp): ITypeState => ({
+  type: CHANGE_MODE,
+  mode,
+});
 
-export function play(): ITypeState {
-  return {
-    type: StateApp.TRAIN,
-  };
-}
+export const changePage = (page: NumberPage): ITypeState => ({
+  type: CHANGE_PAGE,
+  page,
+});

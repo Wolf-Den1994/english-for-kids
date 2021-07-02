@@ -58,7 +58,7 @@ export const render = (
     const reperse = document.createElement(Tags.SVG);
     front.append(reperse);
 
-    if (store.getState().value === StateApp.TRAIN) {
+    if (store.getState().mode === StateApp.TRAIN) {
       img.className = `img image picture`;
       pFront.className = 'text text-font';
       reperse.className = 'svg image-svg';
@@ -94,7 +94,7 @@ export const render = (
 
   const btnStartGame = document.createElement(Tags.BUTTON);
   btnStartGame.className =
-    store.getState().value === StateApp.TRAIN
+    store.getState().mode === StateApp.TRAIN
       ? 'btn btn-start-game play'
       : 'btn btn-start-game';
   btnStartGame.innerHTML = 'Start game';

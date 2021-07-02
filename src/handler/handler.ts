@@ -7,6 +7,7 @@ import { playSound, sound } from '../play/sound';
 import { root } from '../root/root';
 import { resetStatistic } from '../statistic/reset';
 import { sortStatistic } from '../statistic/sort';
+import { changePage } from '../store/actions';
 import { store } from '../store/store';
 import { renderSubject } from '../subject/render';
 import {
@@ -50,7 +51,7 @@ const addListener = (card: HTMLDivElement): void => {
 const categotySelection = (card: HTMLDivElement): void => {
   const word: string = getWord(card);
   const index = imgCategories.indexOf(word) + 1;
-  objApp.page = index;
+  store.dispatch(changePage(index));
   changeActiveLink(index);
   renderSubject(index);
 };
@@ -67,7 +68,7 @@ const workWithCards = (
     } else if (checkClasses(parent, elem, card, ElemClasses.SUBJECT)) {
       if (front) {
         const word: string = getWord(front);
-        const page = cards[objApp.page] as ICards[];
+        const page = cards[store.getState().page] as ICards[];
         fullCards.forEach((item) => {
           if (item.word === word) {
             item.train++;
@@ -108,16 +109,19 @@ const selectionHandler = (event: Event): void => {
   const card = elem.closest(`.${ElemClasses.MAIN_CARD}`) as HTMLDivElement;
   const front = elem.closest(`.${ElemClasses.FRONT}`) as HTMLDivElement;
   const titleTh = elem.closest('.title-th') as HTMLTableHeaderCellElement;
-  if (store.getState().value === StateApp.TRAIN) {
+  if (store.getState().mode === StateApp.TRAIN) {
     workWithCards(elem, card, front);
-    if (objApp.page === NumberPage.STATISTIC) {
+    if (store.getState().page === NumberPage.STATISTIC) {
       workWithStatistic(elem, titleTh);
-    } else if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
+    } else if (
+      store.getState().page === NumberPage.DIFFICULT &&
+      !objApp.empryDifficult
+    ) {
       workWithDiffTrain(front);
     }
-  } else if (objApp.page === NumberPage.MAIN) {
+  } else if (store.getState().page === NumberPage.MAIN) {
     categotySelection(card);
-  } else if (objApp.page === NumberPage.STATISTIC) {
+  } else if (store.getState().page === NumberPage.STATISTIC) {
     workWithStatistic(elem, titleTh);
   } else if (checkClass(elem, ElemClasses.BTN_START_GAME)) {
     startGame(elem);

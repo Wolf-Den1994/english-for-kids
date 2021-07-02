@@ -1,25 +1,30 @@
 import { AnyAction } from 'redux';
-import { StateApp } from '../utils/enums';
+import { NumberPage, StateApp } from '../utils/enums';
 import { TypeStateApp } from '../utils/types';
+import { CHANGE_MODE, CHANGE_PAGE } from './action-types';
 
 interface PositionState {
-  value: TypeStateApp;
+  mode: TypeStateApp;
+  page: number;
 }
 
 const initialState: PositionState = {
-  value: StateApp.TRAIN,
+  mode: StateApp.TRAIN,
+  page: NumberPage.MAIN,
 };
 
 export const rootReducer = (
   state = initialState,
   action: AnyAction,
 ): PositionState => {
-  if (action.type === StateApp.TRAIN) {
-    return { ...state, value: StateApp.TRAIN };
-  }
-  if (action.type === StateApp.PLAY) {
-    return { ...state, value: StateApp.PLAY };
-  }
+  switch (action.type) {
+    case CHANGE_MODE:
+      return { ...state, mode: action.mode };
 
-  return state;
+    case CHANGE_PAGE:
+      return { ...state, page: action.page };
+
+    default:
+      return state;
+  }
 };

@@ -1,10 +1,11 @@
 import cards from '../cards';
 import { renderCategory } from '../category/category';
 import { fullCards } from '../control/obj-statistic';
-import { objApp } from '../control/objs';
 import { changeActiveLink } from '../handler/links-active';
 import { input, label } from '../header/btn-sidebar';
 import { renderStatistic } from '../statistic/render-statistic';
+import { changePage } from '../store/actions';
+import { store } from '../store/store';
 import { renderSubject } from '../subject/render';
 import { overlay } from '../substrate/overlay';
 import { addClassList } from '../utils/add-class';
@@ -21,13 +22,13 @@ const handlerMenu = (event: Event): void => {
     const index = list.indexOf(target.innerHTML);
     changeActiveLink(target);
     if (index === 0) {
-      objApp.page = NumberPage.MAIN;
+      store.dispatch(changePage(NumberPage.MAIN));
       renderCategory();
     } else if (index <= cards[CATEGORY].length) {
-      objApp.page = index;
-      renderSubject(objApp.page);
+      store.dispatch(changePage(index));
+      renderSubject(store.getState().page);
     } else {
-      objApp.page = NumberPage.STATISTIC;
+      store.dispatch(changePage(NumberPage.STATISTIC));
       renderStatistic(fullCards, Order.DESC);
     }
     closeSidebar();

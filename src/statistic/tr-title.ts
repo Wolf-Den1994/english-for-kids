@@ -1,4 +1,4 @@
-import { Arrow, Tags } from '../utils/enums';
+import { Tags } from '../utils/enums';
 import { TypeOrder } from '../utils/types';
 
 export const trTitle = document.createElement(Tags.TR);
@@ -30,7 +30,7 @@ export const renderTitleRow = (order: TypeOrder): void => {
   for (let i = 0; i < NUMBER_COLUMN; i++) {
     const th = document.createElement(Tags.TH);
     th.className = `${arrClassListsTH[i]} title-th ${order}`;
-    th.innerHTML = `${arrContentTH[i]} <div class="div-th">${Arrow.DOWN}</div>`;
+    th.innerHTML = `${arrContentTH[i]}`;
     trTitle.append(th);
   }
 };

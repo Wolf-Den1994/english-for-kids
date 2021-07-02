@@ -6,7 +6,6 @@ export interface ICards {
 }
 
 export interface IObjApplication {
-  page: number;
   countStatistic: number;
   countCards: number;
   empryDifficult: boolean;

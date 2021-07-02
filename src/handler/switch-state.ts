@@ -2,6 +2,7 @@ import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { objApp } from '../control/objs';
 import { input } from '../header/switcher';
+import { changeMode } from '../store/actions';
 import { store } from '../store/store';
 import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
@@ -13,9 +14,9 @@ import { removeClassList } from '../utils/remove-class';
 
 const isPageCategory = (): boolean => {
   if (
-    objApp.page !== NumberPage.MAIN &&
-    objApp.page !== NumberPage.STATISTIC &&
-    objApp.page !== NumberPage.DIFFICULT
+    store.getState().page !== NumberPage.MAIN &&
+    store.getState().page !== NumberPage.STATISTIC &&
+    store.getState().page !== NumberPage.DIFFICULT
   ) {
     return true;
   }
@@ -26,7 +27,7 @@ const changeStateOnTrain = (
   arr: IFullCars[] | ICards[],
   elems: IHTMLElems,
 ): void => {
-  store.getState().value = StateApp.TRAIN;
+  store.dispatch(changeMode(StateApp.TRAIN));
   elems.score.innerHTML = '';
   objGame.counterErrors = 0;
   addClassList(elems.btnStartGame, ElemClasses.PLAY);
@@ -47,7 +48,7 @@ const changeStateOnPlay = (
   arr: IFullCars[] | ICards[],
   elems: IHTMLElems,
 ): void => {
-  store.getState().value = StateApp.PLAY;
+  store.dispatch(changeMode(StateApp.PLAY));
   removeClassList(elems.btnStartGame, ElemClasses.PLAY);
   for (let i = 0; i < arr.length; i++) {
     addClassList(elems.arrSvgs[i], ElemClasses.PLAY);
@@ -56,23 +57,32 @@ const changeStateOnPlay = (
   }
 };
 
-const switchState = (): void => {
+const switchState = (event: Event): void => {
   const elems = getArrsElem();
-  if (input.checked === true) {
-    if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
+  const target = event.target as HTMLInputElement;
+  if (target.checked) {
+    store.dispatch(changeMode(StateApp.TRAIN));
+    if (
+      store.getState().page === NumberPage.DIFFICULT &&
+      !objApp.empryDifficult
+    ) {
       changeStateOnTrain(arrDifficultWord, elems);
     }
     if (isPageCategory()) {
-      changeStateOnTrain(cards[objApp.page] as ICards[], elems);
+      changeStateOnTrain(cards[store.getState().page] as ICards[], elems);
     }
   } else {
-    if (objApp.page === NumberPage.DIFFICULT && !objApp.empryDifficult) {
+    store.dispatch(changeMode(StateApp.PLAY));
+    if (
+      store.getState().page === NumberPage.DIFFICULT &&
+      !objApp.empryDifficult
+    ) {
       changeStateOnPlay(arrDifficultWord, elems);
     }
     if (isPageCategory()) {
-      changeStateOnPlay(cards[objApp.page] as ICards[], elems);
+      changeStateOnPlay(cards[store.getState().page] as ICards[], elems);
     }
   }
 };
 
-input.addEventListener('click', switchState);
+input.addEventListener('change', switchState);

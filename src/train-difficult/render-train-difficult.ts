@@ -1,6 +1,8 @@
 import { fullCards } from '../control/obj-statistic';
 import { objApp } from '../control/objs';
 import { root } from '../root/root';
+import { changePage } from '../store/actions';
+import { store } from '../store/store';
 import { cleanField, render } from '../subject/render';
 import { NumberPage, Tags } from '../utils/enums';
 import { IFullCars } from '../utils/interfaces';
@@ -23,7 +25,7 @@ export const renderTrainDifficult = (): void => {
     }
   });
 
-  objApp.page = NumberPage.DIFFICULT;
+  store.dispatch(changePage(NumberPage.DIFFICULT));
   cleanField();
 
   if (count > 0) {

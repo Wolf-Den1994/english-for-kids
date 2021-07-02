@@ -1,8 +1,8 @@
 import cards from '../cards';
 import { objGame } from '../control/obj-game';
 import { dispatchInfo, fullCards } from '../control/obj-statistic';
-import { objApp } from '../control/objs';
 import { renderFinish } from '../finish/finish';
+import { store } from '../store/store';
 import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
@@ -10,6 +10,9 @@ import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { getStringWord } from '../utils/get-word';
 import { ICards, IFullCars } from '../utils/interfaces';
 import { sound } from './sound';
+
+const IN_INTEREST = 100;
+const DELAY_PLAY_SOUND = 1000;
 
 const addStars = (nameClass: string): void => {
   const score = <HTMLDivElement>document.querySelector('.score');
@@ -33,11 +36,11 @@ const playingArrOfSounds = (arrSounds: string[]) => {
 
 export const startGame = (elem: HTMLElement): void => {
   changeClassList(elem, ElemClasses.BTN_START_GAME, ElemClasses.REPEAT);
-  if (objApp.page === NumberPage.DIFFICULT) {
+  if (store.getState().page === NumberPage.DIFFICULT) {
     const randomAudios = generateRandom(arrDifficultWord);
     playingArrOfSounds(randomAudios);
   } else {
-    const page = cards[objApp.page] as ICards[];
+    const page = cards[store.getState().page] as ICards[];
     const randomAudios = generateRandom(page);
     playingArrOfSounds(randomAudios);
   }
@@ -45,7 +48,7 @@ export const startGame = (elem: HTMLElement): void => {
 
 const addAnswers = (item: IFullCars) => {
   item.answers++;
-  item.percent = (item.play / item.answers) * 100;
+  item.percent = (item.play / item.answers) * IN_INTEREST;
 };
 
 export const gameProcess = (elem: HTMLElement): void => {
@@ -68,7 +71,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       if (objGame.arrAudios.length > 0) {
         setTimeout(() => {
           sound(objGame.arrAudios[0], IndexSounds.FIRST);
-        }, 1000);
+        }, DELAY_PLAY_SOUND);
       } else {
         renderFinish();
       }

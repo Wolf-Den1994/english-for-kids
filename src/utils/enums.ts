@@ -44,11 +44,6 @@ export enum Tags {
   TD = 'td',
 }
 
-export enum Arrow {
-  DOWN = '&#8595;',
-  UP = '&#8593;',
-}
-
 export enum Order {
   ASC = 'asc',
   DESC = 'desc',
