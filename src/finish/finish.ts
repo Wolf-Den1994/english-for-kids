@@ -6,7 +6,7 @@ import { sound } from '../play/sound';
 import { root } from '../root/root';
 import { changePage } from '../store/actions';
 import { store } from '../store/store';
-import { overlay } from '../substrate/overlay';
+import { overlay } from '../overlay/overlay';
 import { addClassList } from '../utils/add-class';
 import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';

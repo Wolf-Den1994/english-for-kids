@@ -3,6 +3,8 @@ export enum ElemClasses {
   IMG_CATEGORY = 'img-category',
   MAIN_CARD = 'main-card',
   FRONT = 'front',
+  ROOT = 'root',
+  OVERLAY = 'overlay',
   SVG = 'svg',
   HOVER = 'hover',
   ACTIVE = 'active',
@@ -19,6 +21,11 @@ export enum ElemClasses {
   IMG = 'img',
   GREAT = 'great',
   MENU_LINK = 'menu-link',
+}
+
+export enum ElemId {
+  ROOT = 'root',
+  OVERLAY = 'overlay',
 }
 
 export enum Tags {

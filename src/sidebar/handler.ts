@@ -7,7 +7,7 @@ import { renderStatistic } from '../statistic/render-statistic';
 import { changePage } from '../store/actions';
 import { store } from '../store/store';
 import { renderSubject } from '../subject/render';
-import { overlay } from '../substrate/overlay';
+import { overlay } from '../overlay/overlay';
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { CATEGORY } from '../utils/consts';

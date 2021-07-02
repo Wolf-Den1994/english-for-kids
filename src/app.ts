@@ -7,7 +7,7 @@ import './store/store';
 import './sidebar/sidebar';
 import './root/root';
 import './category/category';
-import './substrate/overlay';
+import './overlay/overlay';
 import './sidebar/handler';
 import './handler/handler';
 import './handler/switch-state';
