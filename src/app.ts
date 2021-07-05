@@ -8,6 +8,7 @@ import './sidebar/sidebar';
 import './root/root';
 import './category/category';
 import './overlay/overlay';
+import './footer/footer';
 import './sidebar/handler';
 import './handler/handler';
 import './handler/switch-state';

@@ -12,6 +12,8 @@ body {
 }
 
 .root {
+  margin-bottom: 30px;
+  
   &.hidden {
     width: 0;
     height: 0;
