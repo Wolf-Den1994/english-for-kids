@@ -21,4 +21,5 @@ footer.append(linkRSS);
 
 const year = document.createElement(Tags.SPAN);
 year.className = 'rss-year';
+year.innerHTML = `'21`;
 linkRSS.append(year);

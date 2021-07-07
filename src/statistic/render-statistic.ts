@@ -32,7 +32,6 @@ export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
     const row = document.createElement(Tags.TR);
     row.className = 'row';
     row.innerHTML += `
-      <td class="cell">${i + 1}</td>
       <td class="cell cell-word">${data[i].category}</td>
       <td class="cell cell-word">${data[i].word}</td>
       <td class="cell cell-word">${data[i].translation}</td>

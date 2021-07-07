@@ -35,12 +35,6 @@ export const sortStatistic = (title: HTMLTableHeaderCellElement): void => {
   const newFullCards = fullCards.slice();
 
   switch (true) {
-    case checkClass(title, 'title-number'):
-      checkClass(title, Order.DESC)
-        ? directionSorting(newFullCards, 'number', Order.DESC, Order.ASC)
-        : directionSorting(newFullCards, 'number', Order.ASC, Order.DESC);
-      break;
-
     case checkClass(title, 'title-category'):
       checkClass(title, Order.DESC)
         ? directionSorting(newFullCards, 'category', Order.DESC, Order.ASC)
