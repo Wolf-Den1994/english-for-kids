@@ -7,6 +7,7 @@ import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
 import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
+import { getSoundPath } from '../utils/get-sound-path';
 import { getStringWord } from '../utils/get-word';
 import { ICards, IFullCars } from '../utils/interfaces';
 import { sound } from './sound';
@@ -57,7 +58,7 @@ export const gameProcess = (elem: HTMLElement): void => {
     const wordImage = getStringWord(image.src);
     const wordAudio = getStringWord(objGame.arrAudios[0]);
     if (wordImage === wordAudio) {
-      sound(`./audio/correct.mp3`, IndexSounds.SECOND);
+      sound(getSoundPath('correct'), IndexSounds.SECOND);
       addClassList(elem, ElemClasses.GREAT);
       addStars('win');
       fullCards.forEach((item) => {
@@ -77,7 +78,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       }
     } else {
       objGame.counterErrors++;
-      sound(`./audio/error.mp3`, IndexSounds.SECOND);
+      sound(getSoundPath('error'), IndexSounds.SECOND);
       addStars('fail');
       fullCards.forEach((item) => {
         if (item.word === wordAudio) {

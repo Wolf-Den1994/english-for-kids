@@ -10,6 +10,7 @@ import { overlay } from '../overlay/overlay';
 import { addClassList } from '../utils/add-class';
 import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
+import { getSoundPath } from '../utils/get-sound-path';
 
 const ZERO_ERRORS = 0;
 const IS_ONE_ERROR = 1
@@ -32,7 +33,7 @@ export const renderFinish = (): void => {
   addClassList(root, ElemClasses.HIDDEN);
   if (objGame.counterErrors === ZERO_ERRORS) {
     addClassList(overlay, ElemClasses.WINNER);
-    sound(`./audio/success.mp3`, IndexSounds.SECOND);
+    sound(getSoundPath('success'), IndexSounds.SECOND);
   } else {
     addClassList(overlay, ElemClasses.LOSER);
     const plural = objGame.counterErrors === IS_ONE_ERROR ? 'error' : 'errors';
@@ -40,7 +41,7 @@ export const renderFinish = (): void => {
     paragraf.className = 'final-text';
     paragraf.innerHTML = `${objGame.counterErrors} ${plural}`;
     overlay.append(paragraf);
-    sound(`./audio/failure.mp3`, IndexSounds.SECOND);
+    sound(getSoundPath('failure'), IndexSounds.SECOND);
   }
   addClassList(document.body, ElemClasses.HIDDEN);
   addClassList(header, ElemClasses.HIDDEN);
