@@ -17,6 +17,20 @@ const isPageCategory = (): boolean =>
   store.getState().page !== NumberPage.STATISTIC &&
   store.getState().page !== NumberPage.DIFFICULT;
 
+const classIteration = (
+  fn: Function,
+  elems: IHTMLElems,
+  arr: IFullCards[] | ICards[],
+  classChanger?: Function,
+) => {
+  for (let i = 0; i < arr.length; i++) {
+    fn(elems.arrSvgs[i], ElemClasses.PLAY);
+    fn(elems.arrParags[i], ElemClasses.PLAY);
+    fn(elems.arrImages[i], ElemClasses.PLAY);
+    classChanger && classChanger(i);
+  }
+};
+
 const changeStateOnTrain = (
   arr: IFullCards[] | ICards[],
   elems: IHTMLElems,
@@ -30,12 +44,9 @@ const changeStateOnTrain = (
     ElemClasses.REPEAT,
     ElemClasses.BTN_START_GAME,
   );
-  for (let i = 0; i < arr.length; i++) {
-    removeClassList(elems.arrSvgs[i], ElemClasses.PLAY);
-    removeClassList(elems.arrParags[i], ElemClasses.PLAY);
-    removeClassList(elems.arrImages[i], ElemClasses.PLAY);
-    removeClassList(elems.arrImages[i], ElemClasses.GREAT);
-  }
+  classIteration(removeClassList, elems, arr, (i: number) =>
+    removeClassList(elems.arrImages[i], ElemClasses.GREAT),
+  );
 };
 
 const changeStateOnPlay = (
@@ -44,11 +55,7 @@ const changeStateOnPlay = (
 ): void => {
   store.dispatch(changeMode(StateApp.PLAY));
   removeClassList(elems.btnStartGame, ElemClasses.PLAY);
-  for (let i = 0; i < arr.length; i++) {
-    addClassList(elems.arrSvgs[i], ElemClasses.PLAY);
-    addClassList(elems.arrParags[i], ElemClasses.PLAY);
-    addClassList(elems.arrImages[i], ElemClasses.PLAY);
-  }
+  classIteration(addClassList, elems, arr);
 };
 
 const switchState = (event: Event): void => {
