@@ -78,3 +78,8 @@ export enum Events {
   CLICK = 'click',
   CHANGE = 'change',
 }
+
+export enum Links {
+  RSSCHOOL = 'https://rs.school/js/',
+  GITHUB = 'https://github.com/Wolf-Den1994',
+}
