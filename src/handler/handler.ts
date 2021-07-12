@@ -35,16 +35,10 @@ const checkClasses = (
   elem: HTMLElement,
   card: HTMLDivElement,
   parentClass: string,
-): boolean => {
-  if (
-    checkClass(parent, parentClass) &&
-    !checkClass(elem, ElemClasses.SVG) &&
-    !checkClass(card, ElemClasses.HOVER)
-  ) {
-    return true;
-  }
-  return false;
-};
+): boolean =>
+  checkClass(parent, parentClass) &&
+  !checkClass(elem, ElemClasses.SVG) &&
+  !checkClass(card, ElemClasses.HOVER);
 
 const addListener = (card: HTMLDivElement): void => {
   const flipBack = function flipBackCard() {
