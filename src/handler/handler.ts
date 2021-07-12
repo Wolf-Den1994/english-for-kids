@@ -26,7 +26,7 @@ import {
 } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
 import { getWord } from '../utils/get-word';
-import { ICards, IFullCars } from '../utils/interfaces';
+import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 import { changeActiveLink } from './links-active';
 
@@ -103,6 +103,11 @@ const workWithDiffTrain = (front: HTMLDivElement): void => {
   sound(obj.audioSrc, IndexSounds.FIRST);
 };
 
+const isGameProcess = (elems: IHTMLElems, elem: HTMLElement): boolean =>
+  checkClass(elem, ElemClasses.IMG) &&
+  !checkClass(elems.btnStartGame, ElemClasses.BTN_START_GAME) &&
+  !checkClass(elem, ElemClasses.GREAT);
+
 const selectionHandler = (event: Event): void => {
   const elems = getArrsElem();
   const elem = event.target as HTMLElement;
@@ -129,11 +134,7 @@ const selectionHandler = (event: Event): void => {
     if (objGame.arrAudios.length > 0) {
       sound(objGame.arrAudios[0], IndexSounds.FIRST);
     }
-  } else if (
-    checkClass(elem, ElemClasses.IMG) &&
-    !checkClass(elems.btnStartGame, ElemClasses.BTN_START_GAME) &&
-    !checkClass(elem, ElemClasses.GREAT)
-  ) {
+  } else if (isGameProcess(elems, elem)) {
     gameProcess(elem);
   }
 };
