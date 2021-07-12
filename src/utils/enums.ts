@@ -72,3 +72,9 @@ export enum NumberPage {
   STATISTIC = 9,
   DIFFICULT = 10,
 }
+
+export enum Events {
+  MOUSELEAVE = 'mouseleave',
+  CLICK = 'click',
+  CHANGE = 'change',
+}

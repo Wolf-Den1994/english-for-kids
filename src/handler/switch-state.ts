@@ -7,7 +7,7 @@ import { store } from '../store/store';
 import { arrDifficultWord } from '../train-difficult/render-train-difficult';
 import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
-import { ElemClasses, NumberPage, StateApp } from '../utils/enums';
+import { ElemClasses, Events, NumberPage, StateApp } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
 import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
@@ -85,4 +85,4 @@ const switchState = (event: Event): void => {
   }
 };
 
-input.addEventListener('change', switchState);
+input.addEventListener(Events.CHANGE, switchState);

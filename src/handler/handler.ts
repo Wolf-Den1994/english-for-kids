@@ -17,7 +17,13 @@ import {
 import { addClassList } from '../utils/add-class';
 import { checkClass } from '../utils/check-class';
 import { imgCategories } from '../utils/consts';
-import { ElemClasses, IndexSounds, NumberPage, StateApp } from '../utils/enums';
+import {
+  ElemClasses,
+  Events,
+  IndexSounds,
+  NumberPage,
+  StateApp,
+} from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
 import { getWord } from '../utils/get-word';
 import { ICards, IFullCars } from '../utils/interfaces';
@@ -43,9 +49,9 @@ const checkClasses = (
 const addListener = (card: HTMLDivElement): void => {
   const flipBack = function flipBackCard() {
     removeClassList(card, ElemClasses.HOVER);
-    card.removeEventListener('mouseleave', flipBack);
+    card.removeEventListener(Events.MOUSELEAVE, flipBack);
   };
-  card.addEventListener('mouseleave', flipBack);
+  card.addEventListener(Events.MOUSELEAVE, flipBack);
 };
 
 const categotySelection = (card: HTMLDivElement): void => {
@@ -138,4 +144,4 @@ const selectionHandler = (event: Event): void => {
   }
 };
 
-root.addEventListener('click', selectionHandler);
+root.addEventListener(Events.CLICK, selectionHandler);
