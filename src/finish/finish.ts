@@ -12,6 +12,7 @@ import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { removeClassList } from '../utils/remove-class';
 
 const ZERO_ERRORS = 0;
+const IS_ONE_ERROR = 1
 const TIME_SHOW_FINAL = 2500;
 
 const removeFinal = (): void => {
@@ -34,7 +35,7 @@ export const renderFinish = (): void => {
     sound(`./audio/success.mp3`, IndexSounds.SECOND);
   } else {
     addClassList(overlay, ElemClasses.LOSER);
-    const plural = objGame.counterErrors === 1 ? 'error' : 'errors';
+    const plural = objGame.counterErrors === IS_ONE_ERROR ? 'error' : 'errors';
     const paragraf = document.createElement(Tags.P);
     paragraf.className = 'final-text';
     paragraf.innerHTML = `${objGame.counterErrors} ${plural}`;
