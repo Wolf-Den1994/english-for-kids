@@ -12,16 +12,10 @@ import { getArrsElem } from '../utils/get-elems';
 import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 
-const isPageCategory = (): boolean => {
-  if (
-    store.getState().page !== NumberPage.MAIN &&
-    store.getState().page !== NumberPage.STATISTIC &&
-    store.getState().page !== NumberPage.DIFFICULT
-  ) {
-    return true;
-  }
-  return false;
-};
+const isPageCategory = (): boolean =>
+  store.getState().page !== NumberPage.MAIN &&
+  store.getState().page !== NumberPage.STATISTIC &&
+  store.getState().page !== NumberPage.DIFFICULT;
 
 const changeStateOnTrain = (
   arr: IFullCars[] | ICards[],
