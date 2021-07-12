@@ -26,7 +26,7 @@ import {
 } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
 import { getWord } from '../utils/get-word';
-import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
+import { ICards, IFullCards, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 import { changeActiveLink } from './links-active';
 
@@ -99,7 +99,7 @@ const workWithStatistic = (
 
 const workWithDiffTrain = (front: HTMLDivElement): void => {
   const word: string = getWord(front);
-  const obj = copyFullCards.find((item) => item.word === word) as IFullCars;
+  const obj = copyFullCards.find((item) => item.word === word) as IFullCards;
   sound(obj.audioSrc, IndexSounds.FIRST);
 };
 

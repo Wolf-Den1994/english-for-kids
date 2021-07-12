@@ -9,7 +9,7 @@ import { changeClassList } from '../utils/change-class';
 import { ElemClasses, IndexSounds, NumberPage, Tags } from '../utils/enums';
 import { getSoundPath } from '../utils/get-sound-path';
 import { getStringWord } from '../utils/get-word';
-import { ICards, IFullCars } from '../utils/interfaces';
+import { ICards, IFullCards } from '../utils/interfaces';
 import { sound } from './sound';
 
 const IN_INTEREST = 100;
@@ -47,7 +47,7 @@ export const startGame = (elem: HTMLElement): void => {
   }
 };
 
-const addAnswers = (item: IFullCars) => {
+const addAnswers = (item: IFullCards) => {
   item.answers++;
   item.percent = (item.play / item.answers) * IN_INTEREST;
 };

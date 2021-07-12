@@ -1,7 +1,7 @@
 import { objApp } from '../control/objs';
 import { root } from '../root/root';
 import { Tags } from '../utils/enums';
-import { IFullCars } from '../utils/interfaces';
+import { IFullCards } from '../utils/interfaces';
 import { TypeOrder } from '../utils/types';
 import { btnDifficultWord, btnReset } from './button';
 import { mainStatistic } from './main';
@@ -17,7 +17,7 @@ const cleareField = () => {
   objApp.countStatistic = 1;
 };
 
-export const renderStatistic = (data: IFullCars[], order: TypeOrder): void => {
+export const renderStatistic = (data: IFullCards[], order: TypeOrder): void => {
   cleareField();
 
   root.append(mainStatistic);

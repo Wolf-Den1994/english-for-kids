@@ -9,7 +9,7 @@ import { addClassList } from '../utils/add-class';
 import { changeClassList } from '../utils/change-class';
 import { ElemClasses, Events, NumberPage, StateApp } from '../utils/enums';
 import { getArrsElem } from '../utils/get-elems';
-import { ICards, IFullCars, IHTMLElems } from '../utils/interfaces';
+import { ICards, IFullCards, IHTMLElems } from '../utils/interfaces';
 import { removeClassList } from '../utils/remove-class';
 
 const isPageCategory = (): boolean =>
@@ -18,7 +18,7 @@ const isPageCategory = (): boolean =>
   store.getState().page !== NumberPage.DIFFICULT;
 
 const changeStateOnTrain = (
-  arr: IFullCars[] | ICards[],
+  arr: IFullCards[] | ICards[],
   elems: IHTMLElems,
 ): void => {
   store.dispatch(changeMode(StateApp.TRAIN));
@@ -39,7 +39,7 @@ const changeStateOnTrain = (
 };
 
 const changeStateOnPlay = (
-  arr: IFullCars[] | ICards[],
+  arr: IFullCards[] | ICards[],
   elems: IHTMLElems,
 ): void => {
   store.dispatch(changeMode(StateApp.PLAY));

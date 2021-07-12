@@ -1,15 +1,15 @@
 import { fullCards } from '../control/obj-statistic';
 import { checkClass } from '../utils/check-class';
 import { Order } from '../utils/enums';
-import { IFullCars } from '../utils/interfaces';
+import { IFullCards } from '../utils/interfaces';
 import { TypeOrder } from '../utils/types';
 import { renderStatistic } from './render-statistic';
 
-export const sortCards: IFullCars[] = [];
+export const sortCards: IFullCards[] = [];
 
 const sortByTitle = (
-  arr: IFullCars[],
-  arg: keyof IFullCars,
+  arr: IFullCards[],
+  arg: keyof IFullCards,
   order: TypeOrder,
 ): void => {
   if (order === Order.ASC) {
@@ -20,8 +20,8 @@ const sortByTitle = (
 };
 
 const directionSorting = (
-  cards: IFullCars[],
-  column: keyof IFullCars,
+  cards: IFullCards[],
+  column: keyof IFullCards,
   sortAside: TypeOrder,
   renderAside: TypeOrder,
 ): void => {
