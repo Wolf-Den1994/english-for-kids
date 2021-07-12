@@ -53,7 +53,7 @@ const addAnswers = (item: IFullCars) => {
 
 export const gameProcess = (elem: HTMLElement): void => {
   const image = elem as HTMLImageElement;
-  if (objGame.arrAudios.length > 0) {
+  if (objGame.arrAudios.length) {
     const wordImage = getStringWord(image.src);
     const wordAudio = getStringWord(objGame.arrAudios[0]);
     if (wordImage === wordAudio) {
@@ -68,7 +68,7 @@ export const gameProcess = (elem: HTMLElement): void => {
       });
       dispatchInfo(fullCards);
       objGame.arrAudios.shift();
-      if (objGame.arrAudios.length > 0) {
+      if (objGame.arrAudios.length) {
         setTimeout(() => {
           sound(objGame.arrAudios[0], IndexSounds.FIRST);
         }, DELAY_PLAY_SOUND);
