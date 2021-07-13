@@ -13,7 +13,7 @@ import { removeClassList } from '../utils/remove-class';
 import { getSoundPath } from '../utils/get-sound-path';
 
 const ZERO_ERRORS = 0;
-const IS_ONE_ERROR = 1
+const IS_ONE_ERROR = 1;
 const TIME_SHOW_FINAL = 2500;
 
 const removeFinal = (): void => {

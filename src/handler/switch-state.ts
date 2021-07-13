@@ -18,10 +18,13 @@ const isPageCategory = (): boolean =>
   store.getState().page !== NumberPage.DIFFICULT;
 
 const classIteration = (
-  fn: Function,
+  fn: (
+    elemToAddClass: HTMLButtonElement | HTMLElement | Element,
+    elemClass: string,
+  ) => void,
   elems: IHTMLElems,
   arr: IFullCards[] | ICards[],
-  classChanger?: Function,
+  classChanger?: (i: number) => void,
 ) => {
   for (let i = 0; i < arr.length; i++) {
     fn(elems.arrSvgs[i], ElemClasses.PLAY);

@@ -83,3 +83,15 @@ export enum Links {
   RSSCHOOL = 'https://rs.school/js/',
   GITHUB = 'https://github.com/Wolf-Den1994',
 }
+
+export enum SortTitle {
+  CATEGORY = 'category',
+  WORD = 'word',
+  TRANSLATE = 'translate',
+  TRANSLATION = 'translation',
+  TRAIN = 'train',
+  PLAY = 'play',
+  ANSWERS = 'answers',
+  ERRORS = 'errors',
+  PERCENT = 'percent',
+}
