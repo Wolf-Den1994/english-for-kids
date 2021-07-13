@@ -3,7 +3,7 @@ import { objGame } from '../control/obj-game';
 import { root } from '../root/root';
 import { store } from '../store/store';
 import { CATEGORY } from '../utils/consts';
-import { StateApp, Tags } from '../utils/enums';
+import { LayoutPage, StateApp, Tags } from '../utils/enums';
 import { ICards, IFullCards } from '../utils/interfaces';
 
 export const cleanField = (): void => {
@@ -19,7 +19,7 @@ export const render = (
   const title = document.createElement(Tags.TITLE2);
   title.className = 'title';
   title.innerHTML =
-    layout === 'subject'
+    layout === LayoutPage.SUBJECT
       ? cards[CATEGORY][pageNumber]
       : 'Train difficult words';
   root.append(title);
@@ -29,7 +29,8 @@ export const render = (
   root.append(score);
 
   const general = document.createElement(Tags.DIV);
-  general.className = layout === 'subject' ? 'subject' : 'diff';
+  general.className =
+    layout === LayoutPage.SUBJECT ? LayoutPage.SUBJECT : LayoutPage.DIFFICULT;
   root.append(general);
 
   for (let i = 0; i < arrCards.length; i++) {
@@ -105,5 +106,5 @@ export const renderSubject = (page: number): void => {
   const index = page - 1;
   cleanField();
 
-  render('subject', index, cards[index + 1] as ICards[]);
+  render(LayoutPage.SUBJECT, index, cards[index + 1] as ICards[]);
 };

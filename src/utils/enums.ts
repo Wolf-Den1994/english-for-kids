@@ -95,3 +95,8 @@ export enum SortTitle {
   ERRORS = 'errors',
   PERCENT = 'percent',
 }
+
+export enum LayoutPage {
+  SUBJECT = 'subject',
+  DIFFICULT = 'diff',
+}
