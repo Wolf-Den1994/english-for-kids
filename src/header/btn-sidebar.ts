@@ -9,6 +9,7 @@ header.append(btnSidebar);
 
 export const input = document.createElement(Tags.INPUT);
 input.id = RELATIONS;
+input.className = 'menu__toggle-input'
 input.type = 'checkbox';
 btnSidebar.append(input);
 
